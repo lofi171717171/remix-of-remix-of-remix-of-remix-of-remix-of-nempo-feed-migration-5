@@ -2982,7 +2982,7 @@ html, body, #root {
   --nbx-contact: #263442;
 }
 
-/* Nempo Bar Bumper: reusable NEMPO event bumper palette (DJ-bar style opening). */
+/* Nempo Bar Bumper: reusable NEMPO event bumper palette (retro city-pop billboard cityscape). */
 .nbb-tool, .nbb-tab {
   --nbb-ink: #04060c;
   --nbb-ink-2: #0b1226;
@@ -2994,6 +2994,22 @@ html, body, #root {
   --nbb-curtain-hi: #df3554;
   --nbb-curtain-shadow: #380914;
   --nbb-shadow: 0 14px 40px rgba(4, 6, 12, 0.45);
+  --nbb-sky: #0a63c9;
+  --nbb-sky-hi: #2f9bea;
+  --nbb-sky-deep: #0b3f8f;
+  --nbb-blue: #1d428a;
+  --nbb-blue-deep: #11326c;
+  --nbb-green: #0e8a38;
+  --nbb-green-hi: #16a34a;
+  --nbb-red: #f41d24;
+  --nbb-red-hi: #ff5a4d;
+  --nbb-yellow: #ffc21a;
+  --nbb-orange: #ff4800;
+  --nbb-pink: #ff63b8;
+  --nbb-cyan-board: #38d6f0;
+  --nbb-concrete: #94a3b8;
+  --nbb-concrete-deep: #475569;
+  --nbb-window: #00a8ff;
   --color-primary: var(--nbb-magenta);
   --color-primary-foreground: var(--nbb-white);
   --color-primary-border: var(--nbb-magenta);

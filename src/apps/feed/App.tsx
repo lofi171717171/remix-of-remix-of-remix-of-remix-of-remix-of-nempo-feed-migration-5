@@ -224,6 +224,7 @@ import { GARUT_BEANS_SLIDES, type GarutBeansSlide } from './components/garut-bea
 import garutBeansOpeningPng from '@/assets/garut-beans/garut-beans-01-filosofi-logo.png.asset.json';
 import { NempoStoryTodaySlide } from './components/NempoStoryTodaySlide';
 import nempoStoryBajidoranMp4 from '@/assets/nempo-story/nempo-story-02-bajidoran-lampu.mp4.asset.json';
+import nempoBarBumperMp4 from '@/assets/nempo-bumper/nempo-bar-bumper.mp4.asset.json';
 import nempoStoryBajidoranPng from '@/assets/nempo-story/nempo-story-02-bajidoran.png.asset.json';
 import ggsPovScrubPng from '@/assets/ggs-feed-53-pov-playlist-owner.png.asset.json';
 import ggsPromoAkhirTahunPng from '@/assets/ggs-feed-60-promo-akhir-tahun.png.asset.json';
@@ -3757,6 +3758,14 @@ function App() {
             <PrebuiltVideoDownload key="nempo-story-02-mp4" src={nempoStoryBajidoranMp4.url} fileName="Nempo-Story-02-Bajidoran-Lampu.mp4" />
             <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
               Video Story 6 detik · 1080×1920 · lampu panggung bergerak menyorot poster, berulang mulus, persis seperti pratinjau.
+            </p>
+          </div>
+        )}
+        {isNempoBumper && (
+          <div className="mb-3 flex flex-col items-center gap-2">
+            <PrebuiltVideoDownload key="nempo-bar-bumper-mp4" src={nempoBarBumperMp4.url} fileName="Nempo-Bar-Bumper.mp4" />
+            <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
+              Video bumper 8 detik · 1080×1440 · papan nama NEMPO bergaya city-pop dengan lampu neon bergerak, berulang mulus, persis seperti pratinjau.
             </p>
           </div>
         )}

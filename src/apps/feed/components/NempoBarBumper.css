@@ -1,166 +1,231 @@
-/* Nempo Bar Bumper — reusable NEMPO event bumper (DJ-bar style opening), portrait 1080×1440.
-   Palette tokens --nbb-* live in src/styles.css; the whole clip is one 8 s CSS loop so the
-   preview is a single artboard, with velvet curtains opening onto the NEMPO mark. */
+/* Nempo Bar Bumper — reusable NEMPO event bumper, portrait 1080×1440, in a 1980s Japanese
+   city-pop billboard cityscape: cobalt sky, stacked signboards, scrolling marquee tapes and a
+   striped pedestrian railing, with the NEMPO mark on the hero billboard. Palette tokens --nbb-*
+   live in src/styles.css; the whole clip is one 8 s CSS loop so the preview is a single artboard. */
 .nbb-tool { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
 .nbb-controls { display: flex; gap: 8px; }
 .nbb-stage {
   position: relative; container-type: size; width: min(94vw, 420px); aspect-ratio: 1080 / 1440;
-  overflow: hidden; isolation: isolate; background: var(--nbb-ink); color: var(--nbb-white);
+  overflow: hidden; isolation: isolate; background: var(--nbb-sky-deep); color: var(--nbb-white);
   font-family: 'DM Sans', sans-serif; box-shadow: var(--nbb-shadow);
 }
 .nbb-stage * { letter-spacing: 0; box-sizing: border-box; margin: 0; padding: 0; }
 .nbb-stage.is-paused, .nbb-stage.is-paused * { animation-play-state: paused; }
 
-/* Room: deep ink with a cooler pool of light behind the stage and a magenta wash off the floor. */
-.nbb-bg {
+/* Clear cobalt sky, the city-pop backdrop. */
+.nbb-sky {
   position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, var(--nbb-sky-deep) 0%, var(--nbb-sky) 30%, var(--nbb-sky-hi) 50%, var(--nbb-sky) 76%, var(--nbb-sky-deep) 100%);
+}
+
+/* Flat cel-shaded clouds drifting slowly. */
+.nbb-cloud {
+  position: absolute; z-index: 2; height: 4.4cqh; border-radius: 99px;
+  background: color-mix(in srgb, var(--nbb-white) 82%, transparent);
+}
+.nbb-cloud::before, .nbb-cloud::after { content: ''; position: absolute; background: inherit; border-radius: 99px; }
+.nbb-cloud::before { width: 42%; height: 160%; left: 16%; bottom: 42%; }
+.nbb-cloud::after { width: 30%; height: 115%; right: 14%; bottom: 30%; }
+.nbb-cloud--a { top: 8cqh; left: 6cqw; width: 30cqw; animation: nbb-cloud 8s ease-in-out infinite; }
+.nbb-cloud--b { top: 15cqh; right: 20cqw; width: 22cqw; opacity: .7; animation: nbb-cloud 8s ease-in-out infinite -3.2s; }
+.nbb-cloud--c { top: 4cqh; right: 4cqw; width: 16cqw; opacity: .55; animation: nbb-cloud 8s ease-in-out infinite -5.6s; }
+
+/* Distant architecture: grey balcony tower on the left, emerald monolith on the right. */
+.nbb-tower {
+  position: absolute; z-index: 3; left: -5cqw; top: 3cqh; width: 30cqw; height: 46cqh;
   background:
-    radial-gradient(ellipse 70% 52% at 50% 38%, var(--nbb-ink-2) 0%, transparent 72%),
-    radial-gradient(ellipse 120% 70% at 50% 116%, color-mix(in srgb, var(--nbb-magenta) 14%, transparent) 0%, transparent 62%),
-    var(--nbb-ink);
+    repeating-linear-gradient(90deg, transparent 0 3.4cqw, color-mix(in srgb, var(--nbb-window) 55%, transparent) 3.4cqw 6.4cqw),
+    repeating-linear-gradient(to bottom, var(--nbb-concrete) 0 2.4cqh, var(--nbb-concrete-deep) 2.4cqh 6cqh);
+  transform: perspective(700px) rotateY(16deg); transform-origin: left center;
+  animation: nbb-tower-drift 8s ease-in-out infinite;
 }
-.nbb-haze {
-  position: absolute; inset: -12%; z-index: 2; opacity: .5; mix-blend-mode: screen;
+.nbb-monolith {
+  position: absolute; z-index: 3; right: -4cqw; top: 2cqh; width: 18cqw; height: 56cqh;
   background:
-    radial-gradient(ellipse 60% 34% at 26% 48%, color-mix(in srgb, var(--nbb-cyan) 16%, transparent), transparent 70%),
-    radial-gradient(ellipse 60% 34% at 74% 34%, color-mix(in srgb, var(--nbb-magenta) 16%, transparent), transparent 70%);
-  animation: nbb-haze 12s ease-in-out infinite;
-}
-.nbb-floor {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 26cqh; z-index: 2;
-  background: linear-gradient(to top, color-mix(in srgb, var(--nbb-gold) 11%, transparent), transparent 85%);
+    repeating-linear-gradient(to bottom, transparent 0 3.4cqh, color-mix(in srgb, var(--nbb-window) 45%, transparent) 3.4cqh 5.4cqh),
+    linear-gradient(to right, var(--nbb-green-hi), var(--nbb-green));
+  transform: perspective(700px) rotateY(-18deg); transform-origin: right center;
+  animation: nbb-monolith-drift 8s ease-in-out infinite;
 }
 
-/* Moving heads above the booth: two main beams (gold left, magenta right) and two thin cyan scanners. */
-.nbb-beam {
-  position: absolute; z-index: 3; width: 34cqw; height: 240cqh; margin-left: -17cqw;
-  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); filter: blur(1.6cqh); mix-blend-mode: screen; opacity: .55;
+/* Rooftop sign on a grey pillar: red katakana with layered white/blue offsets, neon flicker. */
+.nbb-roofsign {
+  position: absolute; z-index: 4; right: 19cqw; top: 6cqh; width: 30cqw; height: 10cqh;
+  display: grid; place-items: center;
+  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 4.6cqw;
+  color: var(--nbb-red);
+  text-shadow: .34cqw .34cqw 0 var(--nbb-white), .68cqw .68cqw 0 var(--nbb-blue-deep);
+  background: linear-gradient(to bottom, var(--nbb-green-hi), var(--nbb-green));
+  border: .5cqw solid var(--nbb-concrete-deep);
+  box-shadow: 0 .9cqh 1.4cqh color-mix(in srgb, var(--nbb-ink) 30%, transparent);
+  animation: nbb-flicker 8s linear infinite;
 }
-.nbb-beam--l { left: 6cqw; top: -6cqh; transform-origin: 50% 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-gold) 85%, transparent), transparent 72%); animation: nbb-sweep-l 4s ease-in-out infinite; }
-.nbb-beam--r { left: 94cqw; top: -6cqh; transform-origin: 50% 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-magenta) 85%, transparent), transparent 72%); animation: nbb-sweep-r 4s ease-in-out infinite; }
-.nbb-beam--cl { left: 34cqw; top: -10cqh; transform-origin: 50% 0; opacity: .3; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-cyan) 80%, transparent), transparent 66%); animation: nbb-sweep-r 6s ease-in-out infinite; }
-.nbb-beam--cr { left: 66cqw; top: -10cqh; transform-origin: 50% 0; opacity: .3; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-cyan) 80%, transparent), transparent 66%); animation: nbb-sweep-l 6s ease-in-out infinite; }
+.nbb-roofsign::after {
+  content: ''; position: absolute; left: 50%; top: 100%; width: 2.4cqw; height: 9cqh; margin-left: -1.2cqw;
+  background: repeating-linear-gradient(to bottom, var(--nbb-concrete) 0 1.4cqh, var(--nbb-concrete-deep) 1.4cqh 2.8cqh);
+}
+/* Narrow vertical sign bolted to the tower, read top to bottom. */
+.nbb-vsign {
+  position: absolute; z-index: 4; left: 5cqw; top: 12cqh; width: 8cqw; height: 30cqh;
+  display: grid; place-items: center; overflow: hidden; padding: 1cqw 0;
+  writing-mode: vertical-rl; text-orientation: upright;
+  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 3.9cqw;
+  color: var(--nbb-white); background: var(--nbb-pink);
+  border: .45cqw solid var(--nbb-concrete-deep);
+  box-shadow: 0 .9cqh 1.4cqh color-mix(in srgb, var(--nbb-ink) 28%, transparent);
+  animation: nbb-flicker 8s linear infinite -2.4s;
+}
 
-/* Pool of light behind the mark, and the shockwave ring on the first beat.
-   The ring expands past the mark inside half a second so it never sits across the wordmark. */
-.nbb-glow {
-  position: absolute; left: 50%; top: 38%; width: 112cqw; height: 112cqw; margin: -56cqw 0 0 -56cqw; z-index: 3;
-  border-radius: 50%; mix-blend-mode: screen; opacity: .4;
-  background: radial-gradient(circle, color-mix(in srgb, var(--nbb-gold) 40%, transparent) 0%, transparent 62%);
-  animation: nbb-glow 8s linear infinite;
+/* The hero billboard: a slatted royal-blue wall angled away in perspective, NEMPO on it.
+   It stands on two grey legs so the sign reads as built, not floating. */
+.nbb-stand {
+  position: absolute; z-index: 5; left: 14cqw; right: 14cqw; top: 56cqh; height: 32cqh;
+  background:
+    linear-gradient(to bottom, var(--nbb-concrete), var(--nbb-concrete-deep)) left 22% / 5cqw 100% no-repeat,
+    linear-gradient(to bottom, var(--nbb-concrete), var(--nbb-concrete-deep)) right 22% / 5cqw 100% no-repeat;
 }
-.nbb-ring {
-  position: absolute; left: 50%; top: 38%; width: 82cqw; height: 82cqw; margin: -41cqw 0 0 -41cqw; z-index: 4;
-  border-radius: 50%; border: .9cqh solid color-mix(in srgb, var(--nbb-gold) 80%, transparent);
-  mix-blend-mode: screen; opacity: 0; animation: nbb-ring 8s linear infinite;
+.nbb-hero {
+  position: absolute; z-index: 6; left: 6cqw; right: 6cqw; top: 22cqh; height: 40cqh;
+  transform: perspective(1000px) rotateY(-13deg); transform-origin: 50% 50%;
+  animation: nbb-slam 8s linear infinite;
 }
-
-/* The mark itself: white artwork on black, so screen blend drops the box out. */
-.nbb-brand {
-  position: absolute; top: 18%; left: 10%; right: 10%; z-index: 6;
-  display: flex; flex-direction: column; align-items: center;
+.nbb-hero-slats {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--nbb-blue-deep) 90%, black) 0 1.5cqw, var(--nbb-blue) 1.5cqw 3.6cqw);
+  border: .7cqw solid var(--nbb-concrete-deep);
+  box-shadow: 1.4cqw 1.8cqh 0 color-mix(in srgb, var(--nbb-blue-deep) 85%, black), inset 0 0 0 .35cqw color-mix(in srgb, var(--nbb-white) 12%, transparent);
 }
 .nbb-logo {
-  display: block; width: 62cqw; height: 36cqh; object-fit: contain; flex-shrink: 0;
-  mix-blend-mode: screen; opacity: 0; animation: nbb-slam 8s linear infinite;
+  position: absolute; left: 50%; top: 38%; width: 76%; height: 46%; transform: translate(-50%, -50%);
+  object-fit: contain; mix-blend-mode: screen;
 }
+.nbb-kata {
+  position: absolute; left: 0; right: 0; bottom: 7%; text-align: center;
+  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 7.4cqw; line-height: 1;
+  color: var(--nbb-yellow);
+  text-shadow: .42cqw .42cqw 0 var(--nbb-red), .84cqw .84cqw 0 var(--nbb-blue-deep);
+}
+.nbb-badge {
+  position: absolute; z-index: 7; right: -4cqw; top: -6cqh; width: 21cqw; height: 21cqw;
+  display: grid; place-items: center;
+  background: var(--nbb-yellow); color: var(--nbb-red);
+  font-family: 'Anton', sans-serif; font-size: 4.4cqw;
+  clip-path: polygon(50% 0, 60.1% 12.3%, 75% 6.7%, 77.6% 22.4%, 93.3% 25%, 87.7% 39.9%, 100% 50%, 87.7% 60.1%, 93.3% 75%, 77.6% 77.6%, 75% 93.3%, 60.1% 87.7%, 50% 100%, 39.9% 87.7%, 25% 93.3%, 22.4% 77.6%, 6.7% 75%, 12.3% 60.1%, 0 50%, 12.3% 39.9%, 6.7% 25%, 22.4% 22.4%, 25% 6.7%, 39.9% 12.3%);
+  transform: rotate(-12deg);
+  animation: nbb-badge 2s ease-in-out infinite;
+}
+
+/* Brand band: the hero sign's own fascia, attached to its bottom edge. */
 .nbb-tagline {
-  margin-top: 4cqh; display: flex; flex-direction: column; gap: .6cqh; width: 100%; text-align: center;
-  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 4cqw; line-height: 1.25; color: var(--nbb-gold);
+  position: absolute; z-index: 8; left: 12cqw; right: 19cqw; top: 59.5cqh;
+  display: flex; justify-content: center; align-items: center; gap: 3.2cqw; padding: 1.6cqh 0;
+  background: var(--nbb-yellow); color: var(--nbb-blue-deep);
+  font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 3.9cqw; letter-spacing: .1em;
+  border: .4cqh solid var(--nbb-blue-deep);
+  box-shadow: .8cqw 1cqh 0 color-mix(in srgb, var(--nbb-blue-deep) 70%, black);
+  transform: rotate(-1.6deg);
   animation: nbb-tagline 8s linear infinite;
 }
+
+/* One scrolling marquee tape running along the street fascia. */
+.nbb-marquee { position: absolute; z-index: 9; left: -8cqw; right: -8cqw; height: 6.6cqh; overflow: hidden; }
+.nbb-marquee--pink { top: 71cqh; background: var(--nbb-pink); transform: rotate(-3deg); border-block: .35cqh solid var(--nbb-white); }
+.nbb-ticker { display: flex; width: max-content; animation: nbb-tape 8s linear infinite; }
+.nbb-ticker span {
+  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-weight: 700; font-size: 3.4cqw;
+  color: var(--nbb-white); white-space: nowrap;
+}
+
+/* Foreground pedestrian railing: alternating yellow/black stripes under one dark top rail. */
+.nbb-railing {
+  position: absolute; z-index: 12; left: -6cqw; right: -6cqw; bottom: -1cqh; height: 16cqh;
+  background: repeating-linear-gradient(90deg, var(--nbb-yellow) 0 4.6cqw, var(--nbb-ink) 4.6cqw 9.2cqw);
+  border-top: 3cqh solid var(--nbb-concrete-deep);
+  transform: rotate(-1.6deg);
+}
 .nbb-handle {
-  margin-top: 4cqh; display: flex; justify-content: center; align-items: center; gap: 2cqw;
-  font-size: 3.4cqw; font-weight: 700; color: var(--nbb-white); opacity: 0; animation: nbb-handle 8s linear infinite;
+  position: absolute; z-index: 13; left: 50%; bottom: 4.6cqh; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 2cqw; padding: 1.1cqh 3.6cqw;
+  background: var(--nbb-white); color: var(--nbb-blue-deep);
+  border-radius: 99px; border: .45cqh solid var(--nbb-blue-deep);
+  font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 3.5cqw; letter-spacing: .06em;
+  box-shadow: .6cqw .9cqh 0 color-mix(in srgb, var(--nbb-blue-deep) 70%, black);
+  opacity: 0; animation: nbb-handle 8s linear infinite;
 }
 .nbb-handle span { color: var(--nbb-magenta); }
 
-/* Level meter along the floor. */
-.nbb-eq {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 12cqh; z-index: 5;
-  display: flex; align-items: flex-end; gap: .9cqw; padding: 0 5cqw; opacity: .5; mix-blend-mode: screen;
+/* Cross-star glints pinging around the city. */
+.nbb-glint {
+  position: absolute; z-index: 14; width: 6.6cqw; height: 6.6cqw; background: var(--nbb-white);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  opacity: 0; animation: nbb-glint 8s linear infinite;
 }
-.nbb-eq i {
-  flex: 1 1 auto; height: 100%; transform-origin: bottom; border-radius: .5cqw .5cqw 0 0;
-  background: linear-gradient(to top, var(--nbb-gold), var(--nbb-magenta));
-  animation: nbb-bar .5s infinite alternate ease-in-out;
-}
+.nbb-glint--1 { left: 17cqw; top: 29cqh; }
+.nbb-glint--2 { right: 11cqw; top: 50cqh; animation-delay: -2.6s; }
+.nbb-glint--3 { left: 42cqw; top: 76cqh; animation-delay: -5.2s; }
 
 /* Beat flashes, then the fade that makes the loop seam invisible. */
-.nbb-flash { position: absolute; inset: 0; z-index: 8; background: var(--nbb-white); opacity: 0; mix-blend-mode: screen; animation: nbb-flash 8s linear infinite; }
-.nbb-curtain {
-  position: absolute; top: 0; bottom: 0; width: 51%; z-index: 10;
-  background:
-    linear-gradient(to bottom, color-mix(in srgb, var(--nbb-curtain-shadow) 70%, transparent), transparent 22%, transparent 75%, color-mix(in srgb, var(--nbb-curtain-shadow) 60%, transparent)),
-    repeating-linear-gradient(90deg, var(--nbb-curtain-shadow) 0%, var(--nbb-curtain) 4%, var(--nbb-curtain-hi) 7%, var(--nbb-curtain) 10%, var(--nbb-curtain-shadow) 14%);
-  border-bottom: 1cqh solid var(--nbb-gold);
-  box-shadow: 0 0 3cqw var(--nbb-curtain-shadow);
-  will-change: transform;
-}
-.nbb-curtain--left { left: 0; animation: nbb-curtain-left 8s cubic-bezier(.65,0,.35,1) infinite; }
-.nbb-curtain--right { right: 0; animation: nbb-curtain-right 8s cubic-bezier(.65,0,.35,1) infinite; }
-.nbb-valance {
-  position: absolute; inset: 0 0 auto; height: 7cqh; z-index: 11;
-  border-radius: 0 0 50% 50% / 0 0 35% 35%; border-bottom: .65cqh solid var(--nbb-gold);
-  background: repeating-linear-gradient(90deg, var(--nbb-curtain-shadow), var(--nbb-curtain) 5%, var(--nbb-curtain-hi) 8%, var(--nbb-curtain-shadow) 14%);
-  box-shadow: 0 1cqh 2cqh color-mix(in srgb, var(--nbb-ink) 70%, transparent);
-}
-@keyframes nbb-curtain-left {
-  0%, 7%, 100% { transform: translateX(0); }
-  26%, 85% { transform: translateX(-90%); }
-}
-@keyframes nbb-curtain-right {
-  0%, 7%, 100% { transform: translateX(0); }
-  26%, 85% { transform: translateX(90%); }
-}
+.nbb-flash { position: absolute; inset: 0; z-index: 15; background: var(--nbb-white); opacity: 0; mix-blend-mode: screen; animation: nbb-flash 8s linear infinite; }
+.nbb-out { position: absolute; inset: 0; z-index: 16; background: var(--nbb-ink); opacity: 0; animation: nbb-out 8s linear infinite; }
 
-@keyframes nbb-haze { 0%, 100% { transform: translateX(-3%) scale(1.04); } 50% { transform: translateX(3%) scale(1.12); } }
-@keyframes nbb-glow { 0%, 100% { opacity: .32; } 12% { opacity: .95; } 34% { opacity: .5; } 62% { opacity: .8; } }
-@keyframes nbb-sweep-l { 0%, 100% { transform: rotate(-20deg); } 50% { transform: rotate(10deg); } }
-@keyframes nbb-sweep-r { 0%, 100% { transform: rotate(20deg); } 50% { transform: rotate(-10deg); } }
-@keyframes nbb-ring {
-  0%, 11% { opacity: 0; transform: scale(.35); }
-  12% { opacity: .85; }
-  22% { opacity: .25; transform: scale(1.5); }
-  26% { opacity: 0; transform: scale(1.9); }
-  100% { opacity: 0; transform: scale(1.9); }
-}
 @keyframes nbb-slam {
-  0%, 20% { opacity: 0; transform: scale(1.25); filter: blur(12px); }
-  27% { opacity: 1; transform: scale(.97); filter: blur(0); }
-  30% { opacity: 1; transform: scale(1.02); filter: blur(0); }
-  33%, 90% { opacity: 1; transform: scale(1); filter: blur(0); }
-  100% { opacity: 0; transform: scale(.97); filter: blur(0); }
+  0%, 8% { opacity: 0; transform: perspective(1000px) rotateY(-13deg) scale(1.5); }
+  13% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(.94); }
+  17% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(1.03); }
+  21%, 100% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(1); }
 }
 @keyframes nbb-tagline {
-  0%, 32.5% { opacity: 0; transform: translateY(2.6cqh); }
-  38%, 90% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(0); }
+  0%, 30% { opacity: 0; transform: rotate(-1.6deg) translateY(2.4cqh) scaleX(.88); }
+  34%, 100% { opacity: 1; transform: rotate(-1.6deg) translateY(0) scaleX(1); }
 }
 @keyframes nbb-handle {
-  0%, 57.5% { opacity: 0; transform: translateY(1.8cqh); }
-  63% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(0); }
+  0%, 55% { opacity: 0; transform: translateX(-50%) translateY(2.4cqh) scale(.9); }
+  59%, 100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
-@keyframes nbb-bar { from { transform: scaleY(.1); } to { transform: scaleY(1); } }
+@keyframes nbb-badge {
+  0%, 100% { transform: rotate(-12deg) scale(1); }
+  50% { transform: rotate(-5deg) scale(1.09); }
+}
+@keyframes nbb-flicker {
+  0%, 100% { opacity: 1; }
+  6% { opacity: .35; }
+  8% { opacity: 1; }
+  44% { opacity: 1; }
+  46% { opacity: .4; }
+  48% { opacity: 1; }
+  78% { opacity: .55; }
+  80% { opacity: 1; }
+}
+@keyframes nbb-glint {
+  0%, 100% { opacity: 0; transform: scale(.4) rotate(0deg); }
+  4% { opacity: 1; transform: scale(1) rotate(25deg); }
+  9% { opacity: 0; transform: scale(.5) rotate(45deg); }
+}
+@keyframes nbb-cloud { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8cqw); } }
+@keyframes nbb-tape { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes nbb-tower-drift {
+  0%, 100% { transform: perspective(700px) rotateY(16deg) translateX(0); }
+  50% { transform: perspective(700px) rotateY(16deg) translateX(1.8cqw); }
+}
+@keyframes nbb-monolith-drift {
+  0%, 100% { transform: perspective(700px) rotateY(-18deg) translateX(0); }
+  50% { transform: perspective(700px) rotateY(-18deg) translateX(-1.8cqw); }
+}
 @keyframes nbb-flash {
-  0%, 10.8% { opacity: 0; }
-  11.2% { opacity: .9; }
-  13% { opacity: 0; }
-  31.6% { opacity: 0; }
-  32.2% { opacity: .45; }
-  33.4% { opacity: 0; }
-  56.8% { opacity: 0; }
-  57.4% { opacity: .3; }
-  58.6% { opacity: 0; }
-  100% { opacity: 0; }
+  0%, 8%, 100% { opacity: 0; }
+  11% { opacity: .85; }
+  14% { opacity: 0; }
+  32% { opacity: 0; }
+  34% { opacity: .5; }
+  36% { opacity: 0; }
+  57% { opacity: 0; }
+  59% { opacity: .35; }
+  61% { opacity: 0; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .nbb-stage * { animation: none; }
-  .nbb-curtain--left { transform: translateX(-90%); }
-  .nbb-curtain--right { transform: translateX(90%); }
-  .nbb-logo { opacity: 1; transform: none; }
-  .nbb-tagline, .nbb-handle { opacity: 1; }
-  .nbb-flash, .nbb-ring { display: none; }
+@keyframes nbb-out {
+  0%, 2% { opacity: 1; }
+  7% { opacity: 0; }
+  93% { opacity: 0; }
+  100% { opacity: 1; }
 }

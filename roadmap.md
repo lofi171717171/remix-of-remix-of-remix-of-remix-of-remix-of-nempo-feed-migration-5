@@ -53,4 +53,4 @@
 - [x] Bumper NEMPO: ukuran pratinjau vertikal 1080×1440 (ukuran asli 1440×1080 diputar, bukan Story 9:16)
 - [x] Bumper NEMPO: tirai merah berlipat membuka dari tengah seperti Bumper Acara, logo NEMPO tetap fokus
 - [x] Bumper NEMPO: tagline Event Organizer / Tim Kreatif, susunan logo dan teks terpisah agar tidak bertumpuk
-- [ ] Bumper acara NEMPO: video pembuka gaya bumper DJ bar (lampu sorot, strobe, logo NEMPO), vertikal 1080×1440, bisa dipakai terus + download MP4
+- [x] Bumper acara NEMPO: gaya retro city-pop 1980-an (papan nama NEMPO di atas kaki, tulisan Jepang, pita berjalan, pagar kuning-hitam), vertikal 1080×1440 + download MP4 8 detik
