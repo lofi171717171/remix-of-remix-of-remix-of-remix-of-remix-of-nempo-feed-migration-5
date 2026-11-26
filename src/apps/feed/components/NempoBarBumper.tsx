@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import nempoLogo from '@/assets/nempo-bumper-logo-white.png';
 import './NempoBarBumper.css';
 
-/** One CSS loop: dark room, sweeping spotlights, bass-hit logo slam, brand line. */
+/** One CSS loop: velvet curtains open onto the NEMPO stage. */
 export const NBB_LOOP_SECONDS = 8;
 const NBB_BARS = 28;
 
@@ -43,7 +43,9 @@ export function NempoBarBumper() {
           ))}
         </span>
         <span className="nbb-flash" aria-hidden="true" />
-        <span className="nbb-out" aria-hidden="true" />
+        <span className="nbb-curtain nbb-curtain--left" aria-hidden="true" />
+        <span className="nbb-curtain nbb-curtain--right" aria-hidden="true" />
+        <span className="nbb-valance" aria-hidden="true" />
       </div>
     </section>
   );

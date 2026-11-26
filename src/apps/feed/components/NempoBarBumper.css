@@ -1,6 +1,6 @@
 /* Nempo Bar Bumper — reusable NEMPO event bumper (DJ-bar style opening), portrait 1080×1440.
    Palette tokens --nbb-* live in src/styles.css; the whole clip is one 8 s CSS loop so the
-   preview, the PNG cover and the MP4 all come from the same artboard. */
+   preview is a single artboard, with velvet curtains opening onto the NEMPO mark. */
 .nbb-tool { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
 .nbb-controls { display: flex; gap: 8px; }
 .nbb-stage {
@@ -84,7 +84,31 @@
 
 /* Beat flashes, then the fade that makes the loop seam invisible. */
 .nbb-flash { position: absolute; inset: 0; z-index: 8; background: var(--nbb-white); opacity: 0; mix-blend-mode: screen; animation: nbb-flash 8s linear infinite; }
-.nbb-out { position: absolute; inset: 0; z-index: 9; background: var(--nbb-ink); opacity: 1; animation: nbb-out 8s linear infinite; }
+.nbb-curtain {
+  position: absolute; top: 0; bottom: 0; width: 51%; z-index: 10;
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--nbb-curtain-shadow) 70%, transparent), transparent 22%, transparent 75%, color-mix(in srgb, var(--nbb-curtain-shadow) 60%, transparent)),
+    repeating-linear-gradient(90deg, var(--nbb-curtain-shadow) 0%, var(--nbb-curtain) 4%, var(--nbb-curtain-hi) 7%, var(--nbb-curtain) 10%, var(--nbb-curtain-shadow) 14%);
+  border-bottom: 1cqh solid var(--nbb-gold);
+  box-shadow: 0 0 3cqw var(--nbb-curtain-shadow);
+  will-change: transform;
+}
+.nbb-curtain--left { left: 0; animation: nbb-curtain-left 8s cubic-bezier(.65,0,.35,1) infinite; }
+.nbb-curtain--right { right: 0; animation: nbb-curtain-right 8s cubic-bezier(.65,0,.35,1) infinite; }
+.nbb-valance {
+  position: absolute; inset: 0 0 auto; height: 7cqh; z-index: 11;
+  border-radius: 0 0 50% 50% / 0 0 35% 35%; border-bottom: .65cqh solid var(--nbb-gold);
+  background: repeating-linear-gradient(90deg, var(--nbb-curtain-shadow), var(--nbb-curtain) 5%, var(--nbb-curtain-hi) 8%, var(--nbb-curtain-shadow) 14%);
+  box-shadow: 0 1cqh 2cqh color-mix(in srgb, var(--nbb-ink) 70%, transparent);
+}
+@keyframes nbb-curtain-left {
+  0%, 7%, 100% { transform: translateX(0); }
+  26%, 85% { transform: translateX(-90%); }
+}
+@keyframes nbb-curtain-right {
+  0%, 7%, 100% { transform: translateX(0); }
+  26%, 85% { transform: translateX(90%); }
+}
 
 @keyframes nbb-haze { 0%, 100% { transform: translateX(-3%) scale(1.04); } 50% { transform: translateX(3%) scale(1.12); } }
 @keyframes nbb-glow { 0%, 100% { opacity: .32; } 12% { opacity: .95; } 34% { opacity: .5; } 62% { opacity: .8; } }
@@ -98,18 +122,17 @@
   100% { opacity: 0; transform: scale(1.9); }
 }
 @keyframes nbb-slam {
-  0%, 11% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); filter: blur(22px); }
-  13.5% { opacity: 1; transform: translate(-50%, -50%) scale(.95); filter: blur(0); }
-  15.5% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); filter: blur(0); }
-  17.5% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
+  0%, 20% { opacity: 0; transform: translate(-50%, -50%) scale(1.25); filter: blur(12px); }
+  27% { opacity: 1; transform: translate(-50%, -50%) scale(.97); filter: blur(0); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); filter: blur(0); }
+  33% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
   90% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(.97); filter: blur(0); }
 }
 @keyframes nbb-tagline {
-  0%, 32.5% { opacity: 0; transform: translateY(2.6cqh); letter-spacing: .14em; }
-  38% { opacity: 1; transform: translateY(0); letter-spacing: .28em; }
-  90% { opacity: 1; transform: translateY(0); letter-spacing: .28em; }
-  100% { opacity: 0; transform: translateY(0); letter-spacing: .28em; }
+  0%, 32.5% { opacity: 0; transform: translateY(2.6cqh); }
+  38%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
 }
 @keyframes nbb-handle {
   0%, 57.5% { opacity: 0; transform: translateY(1.8cqh); }
@@ -130,4 +153,11 @@
   58.6% { opacity: 0; }
   100% { opacity: 0; }
 }
-@keyframes nbb-out { 0% { opacity: 1; } 4% { opacity: 0; } 92% { opacity: 0; } 99% { opacity: 1; } 100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .nbb-stage * { animation: none; }
+  .nbb-curtain--left { transform: translateX(-90%); }
+  .nbb-curtain--right { transform: translateX(90%); }
+  .nbb-logo { opacity: 1; transform: translate(-50%, -50%); }
+  .nbb-tagline, .nbb-handle { opacity: 1; }
+  .nbb-flash, .nbb-ring { display: none; }
+}

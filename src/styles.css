@@ -2990,6 +2990,9 @@ html, body, #root {
   --nbb-gold: #ffd23a;
   --nbb-magenta: #ff3d8b;
   --nbb-cyan: #43e8ff;
+  --nbb-curtain: #a91636;
+  --nbb-curtain-hi: #df3554;
+  --nbb-curtain-shadow: #380914;
   --nbb-shadow: 0 14px 40px rgba(4, 6, 12, 0.45);
   --color-primary: var(--nbb-magenta);
   --color-primary-foreground: var(--nbb-white);
