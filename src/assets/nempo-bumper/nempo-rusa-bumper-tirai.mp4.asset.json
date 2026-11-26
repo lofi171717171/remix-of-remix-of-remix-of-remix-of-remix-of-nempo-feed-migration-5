@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "87676a47-45e1-422a-bcf5-15563684f1d9",
-  "project_id": "586c7ae0-eb6e-45b5-9a6f-9f7777302b77",
-  "url": "/__l5e/assets-v1/87676a47-45e1-422a-bcf5-15563684f1d9/nempo-rusa-bumper-tirai.mp4",
-  "r2_key": "a/v1/586c7ae0-eb6e-45b5-9a6f-9f7777302b77/87676a47-45e1-422a-bcf5-15563684f1d9/nempo-rusa-bumper-tirai.mp4",
-  "original_filename": "nempo-rusa-bumper-tirai.mp4",
-  "size": 11987664,
   "content_type": "video/mp4",
-  "created_at": "2026-11-26T23:34:01Z"
+  "created_at": "2026-11-26T23:34:01Z",
+  "original_filename": "nempo-rusa-bumper-tirai.mp4",
+  "project_id": "1902f779-8dc8-45bf-9646-7512908ad4a2",
+  "r2_key": "a/v1/1902f779-8dc8-45bf-9646-7512908ad4a2/87676a47-45e1-422a-bcf5-15563684f1d9/nempo-rusa-bumper-tirai.mp4",
+  "size": 11987664,
+  "url": "/__l5e/assets-v1/87676a47-45e1-422a-bcf5-15563684f1d9/nempo-rusa-bumper-tirai.mp4",
+  "version": 1
 }
