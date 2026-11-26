@@ -1,0 +1,133 @@
+/* Nempo Bar Bumper — reusable NEMPO event bumper (DJ-bar style opening), vertical 9:16 story size.
+   Palette tokens --nbb-* live in src/styles.css; the whole clip is one 8 s CSS loop so the
+   preview, the PNG cover and the MP4 all come from the same artboard. */
+.nbb-tool { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+.nbb-controls { display: flex; gap: 8px; }
+.nbb-stage {
+  position: relative; container-type: size; width: min(94vw, 420px); aspect-ratio: 9 / 16;
+  overflow: hidden; isolation: isolate; background: var(--nbb-ink); color: var(--nbb-white);
+  font-family: 'DM Sans', sans-serif; box-shadow: var(--nbb-shadow);
+}
+.nbb-stage * { letter-spacing: 0; box-sizing: border-box; margin: 0; padding: 0; }
+.nbb-stage.is-paused, .nbb-stage.is-paused * { animation-play-state: paused; }
+
+/* Room: deep ink with a cooler pool of light behind the stage and a magenta wash off the floor. */
+.nbb-bg {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse 70% 52% at 50% 38%, var(--nbb-ink-2) 0%, transparent 72%),
+    radial-gradient(ellipse 120% 70% at 50% 116%, color-mix(in srgb, var(--nbb-magenta) 14%, transparent) 0%, transparent 62%),
+    var(--nbb-ink);
+}
+.nbb-haze {
+  position: absolute; inset: -12%; z-index: 2; opacity: .5; mix-blend-mode: screen;
+  background:
+    radial-gradient(ellipse 60% 34% at 26% 48%, color-mix(in srgb, var(--nbb-cyan) 16%, transparent), transparent 70%),
+    radial-gradient(ellipse 60% 34% at 74% 34%, color-mix(in srgb, var(--nbb-magenta) 16%, transparent), transparent 70%);
+  animation: nbb-haze 12s ease-in-out infinite;
+}
+.nbb-floor {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 26cqh; z-index: 2;
+  background: linear-gradient(to top, color-mix(in srgb, var(--nbb-gold) 11%, transparent), transparent 85%);
+}
+
+/* Moving heads above the booth: two main beams (gold left, magenta right) and two thin cyan scanners. */
+.nbb-beam {
+  position: absolute; z-index: 3; width: 34cqw; height: 240cqh; margin-left: -17cqw;
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); filter: blur(1.6cqh); mix-blend-mode: screen; opacity: .55;
+}
+.nbb-beam--l { left: 6cqw; top: -6cqh; transform-origin: 50% 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-gold) 85%, transparent), transparent 72%); animation: nbb-sweep-l 4s ease-in-out infinite; }
+.nbb-beam--r { left: 94cqw; top: -6cqh; transform-origin: 50% 0; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-magenta) 85%, transparent), transparent 72%); animation: nbb-sweep-r 4s ease-in-out infinite; }
+.nbb-beam--cl { left: 34cqw; top: -10cqh; transform-origin: 50% 0; opacity: .3; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-cyan) 80%, transparent), transparent 66%); animation: nbb-sweep-r 6s ease-in-out infinite; }
+.nbb-beam--cr { left: 66cqw; top: -10cqh; transform-origin: 50% 0; opacity: .3; background: linear-gradient(to bottom, color-mix(in srgb, var(--nbb-cyan) 80%, transparent), transparent 66%); animation: nbb-sweep-l 6s ease-in-out infinite; }
+
+/* Pool of light behind the mark, and the shockwave ring on the first beat.
+   The ring expands past the mark inside half a second so it never sits across the wordmark. */
+.nbb-glow {
+  position: absolute; left: 50%; top: 38%; width: 112cqw; height: 112cqw; margin: -56cqw 0 0 -56cqw; z-index: 3;
+  border-radius: 50%; mix-blend-mode: screen; opacity: .4;
+  background: radial-gradient(circle, color-mix(in srgb, var(--nbb-gold) 40%, transparent) 0%, transparent 62%);
+  animation: nbb-glow 8s linear infinite;
+}
+.nbb-ring {
+  position: absolute; left: 50%; top: 38%; width: 82cqw; height: 82cqw; margin: -41cqw 0 0 -41cqw; z-index: 4;
+  border-radius: 50%; border: .9cqh solid color-mix(in srgb, var(--nbb-gold) 80%, transparent);
+  mix-blend-mode: screen; opacity: 0; animation: nbb-ring 8s linear infinite;
+}
+
+/* The mark itself: white artwork on black, so screen blend drops the box out. */
+.nbb-logo {
+  position: absolute; left: 50%; top: 38%; width: 62cqw; z-index: 6;
+  mix-blend-mode: screen; opacity: 0; animation: nbb-slam 8s linear infinite;
+}
+.nbb-tagline {
+  position: absolute; left: 0; right: 0; top: 62%; z-index: 6; text-align: center; white-space: nowrap;
+  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 4cqw; color: var(--nbb-gold);
+  animation: nbb-tagline 8s linear infinite;
+}
+.nbb-handle {
+  position: absolute; left: 0; right: 0; top: 70%; z-index: 6; display: flex; justify-content: center; align-items: center; gap: 2cqw;
+  font-size: 3.4cqw; font-weight: 700; color: var(--nbb-white); opacity: 0; animation: nbb-handle 8s linear infinite;
+}
+.nbb-handle span { color: var(--nbb-magenta); }
+
+/* Level meter along the floor. */
+.nbb-eq {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 12cqh; z-index: 5;
+  display: flex; align-items: flex-end; gap: .9cqw; padding: 0 5cqw; opacity: .5; mix-blend-mode: screen;
+}
+.nbb-eq i {
+  flex: 1 1 auto; height: 100%; transform-origin: bottom; border-radius: .5cqw .5cqw 0 0;
+  background: linear-gradient(to top, var(--nbb-gold), var(--nbb-magenta));
+  animation: nbb-bar .5s infinite alternate ease-in-out;
+}
+
+/* Beat flashes, then the fade that makes the loop seam invisible. */
+.nbb-flash { position: absolute; inset: 0; z-index: 8; background: var(--nbb-white); opacity: 0; mix-blend-mode: screen; animation: nbb-flash 8s linear infinite; }
+.nbb-out { position: absolute; inset: 0; z-index: 9; background: var(--nbb-ink); opacity: 1; animation: nbb-out 8s linear infinite; }
+
+@keyframes nbb-haze { 0%, 100% { transform: translateX(-3%) scale(1.04); } 50% { transform: translateX(3%) scale(1.12); } }
+@keyframes nbb-glow { 0%, 100% { opacity: .32; } 12% { opacity: .95; } 34% { opacity: .5; } 62% { opacity: .8; } }
+@keyframes nbb-sweep-l { 0%, 100% { transform: rotate(-20deg); } 50% { transform: rotate(10deg); } }
+@keyframes nbb-sweep-r { 0%, 100% { transform: rotate(20deg); } 50% { transform: rotate(-10deg); } }
+@keyframes nbb-ring {
+  0%, 11% { opacity: 0; transform: scale(.35); }
+  12% { opacity: .85; }
+  22% { opacity: .25; transform: scale(1.5); }
+  26% { opacity: 0; transform: scale(1.9); }
+  100% { opacity: 0; transform: scale(1.9); }
+}
+@keyframes nbb-slam {
+  0%, 11% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); filter: blur(22px); }
+  13.5% { opacity: 1; transform: translate(-50%, -50%) scale(.95); filter: blur(0); }
+  15.5% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); filter: blur(0); }
+  17.5% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
+  90% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(.97); filter: blur(0); }
+}
+@keyframes nbb-tagline {
+  0%, 32.5% { opacity: 0; transform: translateY(2.6cqh); letter-spacing: .14em; }
+  38% { opacity: 1; transform: translateY(0); letter-spacing: .28em; }
+  90% { opacity: 1; transform: translateY(0); letter-spacing: .28em; }
+  100% { opacity: 0; transform: translateY(0); letter-spacing: .28em; }
+}
+@keyframes nbb-handle {
+  0%, 57.5% { opacity: 0; transform: translateY(1.8cqh); }
+  63% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
+}
+@keyframes nbb-bar { from { transform: scaleY(.1); } to { transform: scaleY(1); } }
+@keyframes nbb-flash {
+  0%, 10.8% { opacity: 0; }
+  11.2% { opacity: .9; }
+  13% { opacity: 0; }
+  31.6% { opacity: 0; }
+  32.2% { opacity: .45; }
+  33.4% { opacity: 0; }
+  56.8% { opacity: 0; }
+  57.4% { opacity: .3; }
+  58.6% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes nbb-out { 0% { opacity: 1; } 4% { opacity: 0; } 92% { opacity: 0; } 99% { opacity: 1; } 100% { opacity: 1; } }

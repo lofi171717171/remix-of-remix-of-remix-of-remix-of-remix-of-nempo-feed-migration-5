@@ -135,6 +135,7 @@ import { MusiComedyRundown } from './components/MusiComedyRundown';
 import { MusiComedyBumper } from './components/MusiComedyBumper';
 import { NempoLogoOpening } from './components/NempoLogoOpening';
 import { DangdutHalloweenBumper } from './components/DangdutHalloweenBumper';
+import { NempoBarBumper } from './components/NempoBarBumper';
 import { Button } from '@/components/ui/button';
 import { renderNempoSlide20Png } from './lib/renderNempoSlide20Png';
 import {
@@ -3238,6 +3239,7 @@ function App() {
     | 'bumper'
     | 'bumper-logo'
     | 'bumper-dangdut'
+    | 'bumper-nempo'
   >('nempo');
   const [activeSlide, setActiveSlide] = useState<FeedSlide>(32);
   const [activeClientSlide, setActiveClientSlide] = useState<ClientSlide>(3);
@@ -3259,6 +3261,7 @@ function App() {
   const isRundown = activeFeed === 'rundown';
   const isBumper = activeFeed === 'bumper' || activeFeed === 'bumper-logo' || activeFeed === 'bumper-dangdut';
   const isDangdutBumper = activeFeed === 'bumper-dangdut';
+  const isNempoBumper = activeFeed === 'bumper-nempo';
   const isLogoBumper = activeFeed === 'bumper-logo';
   const isPhotobooth = activeFeed === 'photobooth';
   const isMemberCard = activeFeed === 'member-card';
@@ -3628,6 +3631,7 @@ function App() {
           <Button role="tab" aria-selected={activeFeed === 'bumper'} onClick={() => setActiveFeed('bumper')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper Acara</Button>
           <Button role="tab" aria-selected={isLogoBumper} onClick={() => setActiveFeed('bumper-logo')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper 2 · Opening Logo</Button>
           <Button role="tab" aria-selected={isDangdutBumper} onClick={() => setActiveFeed('bumper-dangdut')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper 3 · Dangdut Halloween</Button>
+          <Button role="tab" aria-selected={isNempoBumper} onClick={() => setActiveFeed('bumper-nempo')} className="nbb-tab" variant="ghost" size="sm">Bumper 4 · NEMPO Bar</Button>
           <button
             type="button"
             role="tab"
@@ -3866,7 +3870,7 @@ function App() {
           </div>
         )}
         {isGgsMen && ggsMenSlide === 1 && <div className="mb-3"><Button asChild><a href={ggsMenVideo.url} download="GGS-Cowok-Pilihan-Rambut.mp4"><Download className="h-4 w-4" aria-hidden="true" />Download video · MP4 1440×1920</a></Button></div>}
-        {!isGgsMen && !isCoupon && !isQCard && !isSpreadsheet && !isRundown && !isBumper && !isNempoStory && (
+        {!isGgsMen && !isCoupon && !isQCard && !isSpreadsheet && !isRundown && !isBumper && !isNempoStory && !isNempoBumper && (
           <div className="mb-3 flex flex-col items-center gap-2">
             {activeFeed === 'client' && activeClientSlide === 12 ? (
               <Button asChild>
@@ -4670,6 +4674,8 @@ function App() {
           <GgsCouponDesigner />
         ) : isRundown ? (
           <MusiComedyRundown exportRef={exportRef} />
+        ) : isNempoBumper ? (
+          <NempoBarBumper />
         ) : isDangdutBumper ? (
           <DangdutHalloweenBumper />
         ) : isLogoBumper ? (
@@ -4779,7 +4785,7 @@ function App() {
             ))}
           </div>
         )}
-        {!isGgsMen && !isGarutBeans && !isNempoStory && !isSpreadsheet && !isRundown && !isBumper && !isCoupon && !isQCard && !isPhotobooth && !isMemberCard && !isCalendar && <div
+        {!isGgsMen && !isGarutBeans && !isNempoStory && !isSpreadsheet && !isRundown && !isBumper && !isNempoBumper && !isCoupon && !isQCard && !isPhotobooth && !isMemberCard && !isCalendar && <div
           className="mt-4 flex max-w-[94vw] items-center gap-1 overflow-x-auto rounded-full bg-[#062f4d] p-1 shadow-[0_8px_20px_rgba(0,40,78,0.2)] max-[640px]:mb-4 max-[640px]:gap-0.5 max-[640px]:p-0.5"
           aria-label={
             isGgsStory
