@@ -56,17 +56,21 @@
 }
 
 /* The mark itself: white artwork on black, so screen blend drops the box out. */
+.nbb-brand {
+  position: absolute; top: 18%; left: 10%; right: 10%; z-index: 6;
+  display: flex; flex-direction: column; align-items: center;
+}
 .nbb-logo {
-  position: absolute; left: 50%; top: 38%; width: 62cqw; z-index: 6;
+  display: block; width: 62cqw; height: 36cqh; object-fit: contain; flex-shrink: 0;
   mix-blend-mode: screen; opacity: 0; animation: nbb-slam 8s linear infinite;
 }
 .nbb-tagline {
-  position: absolute; left: 0; right: 0; top: 62%; z-index: 6; text-align: center; white-space: nowrap;
-  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 4cqw; color: var(--nbb-gold);
+  margin-top: 4cqh; display: flex; flex-direction: column; gap: .6cqh; width: 100%; text-align: center;
+  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 4cqw; line-height: 1.25; color: var(--nbb-gold);
   animation: nbb-tagline 8s linear infinite;
 }
 .nbb-handle {
-  position: absolute; left: 0; right: 0; top: 70%; z-index: 6; display: flex; justify-content: center; align-items: center; gap: 2cqw;
+  margin-top: 4cqh; display: flex; justify-content: center; align-items: center; gap: 2cqw;
   font-size: 3.4cqw; font-weight: 700; color: var(--nbb-white); opacity: 0; animation: nbb-handle 8s linear infinite;
 }
 .nbb-handle span { color: var(--nbb-magenta); }
@@ -122,12 +126,11 @@
   100% { opacity: 0; transform: scale(1.9); }
 }
 @keyframes nbb-slam {
-  0%, 20% { opacity: 0; transform: translate(-50%, -50%) scale(1.25); filter: blur(12px); }
-  27% { opacity: 1; transform: translate(-50%, -50%) scale(.97); filter: blur(0); }
-  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); filter: blur(0); }
-  33% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
-  90% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(.97); filter: blur(0); }
+  0%, 20% { opacity: 0; transform: scale(1.25); filter: blur(12px); }
+  27% { opacity: 1; transform: scale(.97); filter: blur(0); }
+  30% { opacity: 1; transform: scale(1.02); filter: blur(0); }
+  33%, 90% { opacity: 1; transform: scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: scale(.97); filter: blur(0); }
 }
 @keyframes nbb-tagline {
   0%, 32.5% { opacity: 0; transform: translateY(2.6cqh); }
@@ -157,7 +160,7 @@
   .nbb-stage * { animation: none; }
   .nbb-curtain--left { transform: translateX(-90%); }
   .nbb-curtain--right { transform: translateX(90%); }
-  .nbb-logo { opacity: 1; transform: translate(-50%, -50%); }
+  .nbb-logo { opacity: 1; transform: none; }
   .nbb-tagline, .nbb-handle { opacity: 1; }
   .nbb-flash, .nbb-ring { display: none; }
 }

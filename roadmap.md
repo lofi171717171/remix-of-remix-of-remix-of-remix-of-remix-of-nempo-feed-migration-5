@@ -52,4 +52,5 @@
 - [x] NEMPO Story slide 01 ("Today") dihapus — Story tinggal satu slide (Bajidoran)
 - [x] Bumper NEMPO: ukuran pratinjau vertikal 1080×1440 (ukuran asli 1440×1080 diputar, bukan Story 9:16)
 - [x] Bumper NEMPO: tirai merah berlipat membuka dari tengah seperti Bumper Acara, logo NEMPO tetap fokus
+- [x] Bumper NEMPO: tagline Event Organizer / Tim Kreatif, susunan logo dan teks terpisah agar tidak bertumpuk
 - [ ] Bumper acara NEMPO: video pembuka gaya bumper DJ bar (lampu sorot, strobe, logo NEMPO), vertikal 1080×1440, bisa dipakai terus + download MP4

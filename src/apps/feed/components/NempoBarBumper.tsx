@@ -34,9 +34,11 @@ export function NempoBarBumper() {
         <span className="nbb-beam nbb-beam--cr" aria-hidden="true" />
         <span className="nbb-glow" aria-hidden="true" />
         <span className="nbb-ring" aria-hidden="true" />
-        <img className="nbb-logo" src={nempoLogo} alt="NEMPO" draggable={false} />
-        <p className="nbb-tagline">SOUND · VISUAL · EVENT</p>
-        <p className="nbb-handle"><b>@nempo.id</b><span>·</span>GARUT</p>
+        <div className="nbb-brand">
+          <img className="nbb-logo" src={nempoLogo} alt="NEMPO" draggable={false} />
+          <p className="nbb-tagline"><span>EVENT ORGANIZER</span><span>TIM KREATIF</span></p>
+          <p className="nbb-handle"><b>@nempo.id</b><span>·</span>GARUT</p>
+        </div>
         <span className="nbb-eq" aria-hidden="true">
           {Array.from({ length: NBB_BARS }, (_, i) => (
             <i key={i} style={{ animationDelay: `-${(i % 7) * 0.09}s`, animationDuration: `${0.42 + (i % 5) * 0.07}s` }} />
