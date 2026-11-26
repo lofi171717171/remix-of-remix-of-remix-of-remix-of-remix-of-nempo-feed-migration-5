@@ -5,7 +5,7 @@ import saduliLogo from '@/assets/saduli-ragap-entertainment-logo-keyed.png';
 import bgImage from '@/assets/nempo-feed-slide-50-bg.jpg';
 // Slide 52's ribbon-free truss frame; its hard-cut lower yellow beams were erased and redrawn as soft CSS beams (.nst-beam).
 import frameAsset from '@/assets/nempo-story/nempo-story-stage-frame.webp.asset.json';
-import { nempoStoryToday as P, NEMPO_STORY_CLEAR_BOX as CLEAR } from './nempo-story-today';
+import { nempoStoryToday, nempoStoryBajidoran, NEMPO_STORY_CLEAR_BOX as CLEAR } from './nempo-story-today';
 import { STAGE_LAMPS, STAGE_SPOTS, stageLightStyle } from './nempo-stage-lights';
 import './NempoAjakRequestSlide.css';
 import './KalaMudaRecruitSlide.css';
@@ -16,7 +16,8 @@ import './NempoStoryTodaySlide.css';
  * Good Story Cafe and BAJIDORAN x Dj inside the frame. Static (no animation) so the PNG matches the preview.
  * `clear` hides the backdrop so the frame's middle exports transparent.
  */
-export function NempoStoryTodaySlide({ exportRef, clear = false }: { exportRef?: RefObject<HTMLElement | null>; clear?: boolean }) {
+export function NempoStoryTodaySlide({ exportRef, clear = false, variant = 'today' }: { exportRef?: RefObject<HTMLElement | null>; clear?: boolean; variant?: 'today' | 'bajidoran' }) {
+  const P = variant === 'bajidoran' ? nempoStoryBajidoran : nempoStoryToday;
   const { headline, venue, act } = P;
   return (
     <section

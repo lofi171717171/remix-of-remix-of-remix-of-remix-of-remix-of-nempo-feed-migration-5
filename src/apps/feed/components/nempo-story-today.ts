@@ -13,6 +13,13 @@ export const nempoStoryToday = {
   },
 } as const;
 
+/** NEMPO Story 02 — same cover layout as Story 01, dated for the Bajidoran DJ night (owner asked for slide 01's arrangement). */
+export const nempoStoryBajidoran = {
+  ...nempoStoryToday,
+  headline: 'Hari Ini!',
+  date: { weekday: 'Jumat', day: '27', month: 'November', year: '2026', iso: '2026-11-27' },
+} as const;
+
 /** Prebuilt PNGs are captured from the preview at 1080 CSS px × 3. */
 export const NEMPO_STORY_EXPORT = { width: 3240, height: 5760 } as const;
 

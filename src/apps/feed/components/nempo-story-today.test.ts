@@ -36,3 +36,11 @@ describe('NEMPO Story "Today" cover', () => {
     expect(NEMPO_STORY_CLEAR_KEEP).toContain('.nar-gsc');
   });
 });
+
+import { nempoStoryBajidoran } from './nempo-story-today';
+describe('nempo story 02', () => {
+  it('is dated Jumat 27 November 2026', () => {
+    expect(nempoStoryBajidoran.date.iso).toBe('2026-11-27');
+    expect(nempoStoryBajidoran.headline).toBe('Hari Ini!');
+  });
+});

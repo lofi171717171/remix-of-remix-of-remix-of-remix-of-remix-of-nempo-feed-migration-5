@@ -223,6 +223,7 @@ import { GARUT_BEANS_SLIDES, type GarutBeansSlide } from './components/garut-bea
 import garutBeansOpeningPng from '@/assets/garut-beans/garut-beans-01-filosofi-logo.png.asset.json';
 import { NempoStoryTodaySlide } from './components/NempoStoryTodaySlide';
 import nempoStoryTodayPng from '@/assets/nempo-story/nempo-story-01-today.png.asset.json';
+import nempoStoryBajidoranPng from '@/assets/nempo-story/nempo-story-02-bajidoran.png.asset.json';
 import nempoStoryTodayClearPng from '@/assets/nempo-story/nempo-story-01-today-clear.png.asset.json';
 import ggsPovScrubPng from '@/assets/ggs-feed-53-pov-playlist-owner.png.asset.json';
 import ggsPromoAkhirTahunPng from '@/assets/ggs-feed-60-promo-akhir-tahun.png.asset.json';
@@ -3240,6 +3241,7 @@ function App() {
     | 'bumper-dangdut'
   >('nempo');
   const [activeSlide, setActiveSlide] = useState<FeedSlide>(32);
+  const [nempoStorySlide, setNempoStorySlide] = useState<1 | 2>(1);
   const [activeClientSlide, setActiveClientSlide] = useState<ClientSlide>(3);
   const [garutBeansSlide, setGarutBeansSlide] = useState<GarutBeansSlide>(1);
   const [ggsMenSlide, setGgsMenSlide] = useState<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>(1);
@@ -3559,7 +3561,7 @@ function App() {
       ? isGgsStory
         ? [1, 2, 3, 4, 5, 6, 7, 8]
         : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
-      : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, ...DIVISION_SLIDES, NEMPO_PAHLAWAN_SLIDE, NEMPO_CS_SLIDE, NEMPO_BAJIDORAN_SLIDE, NEMPO_BAJIDORAN_REEL_SLIDE, NEMPO_BAJIDORAN_SAWER_SLIDE, 49, NEMPO_SADULI_DJ_SLIDE, NEMPO_AJAK_REQUEST_SLIDE, NEMPO_HARI_INI_SLIDE, NEMPO_TERIMA_KASIH_SLIDE, NEMPO_MALAM_MINGGU_SLIDE, NEMPO_KOLABORASI_SLIDE, NEMPO_KOLABORASI_CARA_SLIDE, NEMPO_CAR_FREE_DAY_SLIDE, NEMPO_CFD_INFO_SLIDE, ...NEMPO_MOMEN_DIGITAL_SLIDES, NEMPO_BAJIDORAN_FEST_SLIDE, NEMPO_HARI_GURU_SLIDE, NEMPO_BAJIDORAN_STORY_SLIDE];
+      : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, ...DIVISION_SLIDES, NEMPO_PAHLAWAN_SLIDE, NEMPO_CS_SLIDE, NEMPO_BAJIDORAN_SLIDE, NEMPO_BAJIDORAN_REEL_SLIDE, NEMPO_BAJIDORAN_SAWER_SLIDE, 49, NEMPO_SADULI_DJ_SLIDE, NEMPO_AJAK_REQUEST_SLIDE, NEMPO_HARI_INI_SLIDE, NEMPO_TERIMA_KASIH_SLIDE, NEMPO_MALAM_MINGGU_SLIDE, NEMPO_KOLABORASI_SLIDE, NEMPO_KOLABORASI_CARA_SLIDE, NEMPO_CAR_FREE_DAY_SLIDE, NEMPO_CFD_INFO_SLIDE, ...NEMPO_MOMEN_DIGITAL_SLIDES, NEMPO_BAJIDORAN_FEST_SLIDE, NEMPO_HARI_GURU_SLIDE];
   const selectedSlide =
     isGgsFeed ? activeClientSlide : activeSlide;
 
@@ -3738,7 +3740,21 @@ function App() {
             Q Card MC
           </button>
         </div>
-        {isNempoStory && (
+        {isNempoStory && nempoStorySlide === 2 && (
+          <div className="mb-3 flex flex-col items-center gap-2">
+            <PrebuiltPngDownload
+              key="nempo-story-02"
+              src={nempoStoryBajidoranPng.url}
+              fileName="Nempo-Story-02-Bajidoran-Hari-Ini.png"
+              label="Download PNG"
+              className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
+            />
+            <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
+              PNG 3240×5760 ukuran Story, teks tajam. Di iPad/iPhone pilih “Simpan Gambar” atau “Simpan ke File”.
+            </p>
+          </div>
+        )}
+        {isNempoStory && nempoStorySlide === 1 && (
           <div className="mb-3 flex flex-col items-center gap-2">
             <PrebuiltPngDownload
               key="nempo-story-01"
@@ -4690,7 +4706,7 @@ function App() {
         ) : isGarutBeans ? (
           <GarutBeansOpeningSlide key={garutBeansSlide} exportRef={exportRef} />
         ) : isNempoStory ? (
-          <NempoStoryTodaySlide exportRef={exportRef} />
+          nempoStorySlide === 2 ? <NempoStoryTodaySlide variant="bajidoran" exportRef={exportRef} /> : <NempoStoryTodaySlide exportRef={exportRef} />
         ) : isGgsMen ? (
           ggsMenSlide === 11 ? <GgsMenTeaserSpesialSlide exportRef={exportRef} /> : ggsMenSlide === 10 ? <GgsMenUndanganSlide exportRef={exportRef} /> : ggsMenSlide === 9 ? <GgsMenGiveawaySlide exportRef={exportRef} /> : ggsMenSlide === 8 ? <GgsMenPovSlide exportRef={exportRef} /> : ggsMenSlide === 7 ? <GgsMenCutCoverSlide exportRef={exportRef} lead="Two" tail="Block" photo={ggsMenTwoBlockPhoto.url} photoWidth={1478} photoHeight={1504} photoPosition="50% 30%" /> : ggsMenSlide === 6 ? <GgsMenColouringPromoSlide exportRef={exportRef} /> : ggsMenSlide === 5 ? <GgsMenPermPromoSlide exportRef={exportRef} /> : ggsMenSlide === 4 ? <GgsMenCutCoverSlide exportRef={exportRef} /> : ggsMenSlide === 3 ? <GgsMenDoubleDaySlide exportRef={exportRef} /> : ggsMenSlide === 2 ? <GgsMenContactSlide exportRef={exportRef} /> : <GgsMenHairCardsSlide exportRef={exportRef} />
         ) : isGgsFeed ? (
@@ -4766,6 +4782,22 @@ function App() {
             ))}
           </div>
         )}
+        {isNempoStory && (
+          <div className="mt-4 flex max-w-[94vw] items-center gap-1 overflow-x-auto rounded-full bg-[#062f4d] p-1 shadow-[0_8px_20px_rgba(0,40,78,0.2)]" aria-label="Pilih slide Nempo Story">
+            {([1, 2] as const).map((slide) => (
+              <Button variant="ghost" size="sm"
+                key={slide}
+                type="button"
+                aria-label={`Tampilkan slide ${String(slide).padStart(2, '0')}`}
+                aria-pressed={nempoStorySlide === slide}
+                onClick={() => setNempoStorySlide(slide)}
+                className={`h-7 rounded-full px-3 py-1 text-[10px] font-black ${nempoStorySlide === slide ? 'bg-[#ffdd00] text-[#062f4d] hover:bg-[#ffdd00]' : 'text-white/75 hover:bg-transparent hover:text-white'}`}
+              >
+                {String(slide).padStart(2, '0')}
+              </Button>
+            ))}
+          </div>
+        )}
         {isGarutBeans && (
           <div className="mt-4 flex max-w-[94vw] items-center gap-1 overflow-x-auto rounded-full bg-[#3b1a0e] p-1 shadow-[0_8px_20px_rgba(59,26,14,0.2)]" aria-label="Pilih slide Garut Beans">
             {GARUT_BEANS_SLIDES.map((slide) => (
@@ -4782,7 +4814,7 @@ function App() {
             ))}
           </div>
         )}
-        {!isGgsMen && !isGarutBeans && !isSpreadsheet && !isRundown && !isBumper && !isCoupon && !isQCard && !isPhotobooth && !isMemberCard && !isCalendar && <div
+        {!isGgsMen && !isGarutBeans && !isNempoStory && !isSpreadsheet && !isRundown && !isBumper && !isCoupon && !isQCard && !isPhotobooth && !isMemberCard && !isCalendar && <div
           className="mt-4 flex max-w-[94vw] items-center gap-1 overflow-x-auto rounded-full bg-[#062f4d] p-1 shadow-[0_8px_20px_rgba(0,40,78,0.2)] max-[640px]:mb-4 max-[640px]:gap-0.5 max-[640px]:p-0.5"
           aria-label={
             isGgsStory
