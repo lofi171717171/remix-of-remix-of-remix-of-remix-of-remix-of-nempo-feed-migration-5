@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Pause, Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import rusaBumper from '@/assets/nempo-bumper/nempo-rusa-bumper.mp4.asset.json';
+import rusaBumper from '@/assets/nempo-bumper/nempo-rusa-bumper-v2.mp4.asset.json';
 import './NempoBarBumper.css';
 
 export const NBB_LOOP_SECONDS = 8;
