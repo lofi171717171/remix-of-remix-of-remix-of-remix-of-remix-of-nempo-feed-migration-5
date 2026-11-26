@@ -38,6 +38,10 @@ export function NempoBarBumper() {
         <span className="nbb-stand" aria-hidden="true" />
         <div className="nbb-hero">
           <span className="nbb-hero-slats" aria-hidden="true" />
+          <span className="nbb-batik nbb-batik--top" aria-hidden="true" />
+          <span className="nbb-batik nbb-batik--bot" aria-hidden="true" />
+          <span className="nbb-kujang nbb-kujang--l" aria-hidden="true" />
+          <span className="nbb-kujang nbb-kujang--r" aria-hidden="true" />
           <span className="nbb-badge" aria-hidden="true">NEW</span>
           <img className="nbb-logo" src={nempoLogo} alt="NEMPO" draggable={false} />
           <p className="nbb-kata">SAMPURASUN!</p>

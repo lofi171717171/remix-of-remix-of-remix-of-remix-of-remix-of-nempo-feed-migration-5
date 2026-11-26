@@ -97,11 +97,40 @@
   box-shadow: 1.4cqw 1.8cqh 0 color-mix(in srgb, var(--nbb-blue-deep) 85%, black), inset 0 0 0 .35cqw color-mix(in srgb, var(--nbb-white) 12%, transparent);
 }
 .nbb-logo {
-  position: absolute; left: 50%; top: 38%; width: 76%; height: 46%; transform: translate(-50%, -50%);
-  object-fit: contain; mix-blend-mode: screen;
+  position: absolute; left: 50%; top: 39%; width: 98%; height: 58%; translate: -50% -50%;
+  object-fit: contain; mix-blend-mode: screen; transform-origin: 50% 80%;
+  animation: nbb-bop 2s ease-in-out infinite;
 }
+/* Sundanese ornaments: gold batik (kawung-style dots) bands and two kujang blades flanking the logo. */
+.nbb-batik {
+  position: absolute; left: 3%; right: 3%; height: 6%; z-index: 1;
+  background:
+    radial-gradient(circle at 50% 50%, var(--nbb-yellow) 0 22%, transparent 24%) 0 0 / 4.2cqw 100%,
+    radial-gradient(ellipse 30% 46% at 0% 50%, var(--nbb-orange) 0 60%, transparent 64%) 0 0 / 4.2cqw 100%,
+    radial-gradient(ellipse 30% 46% at 100% 50%, var(--nbb-orange) 0 60%, transparent 64%) 0 0 / 4.2cqw 100%;
+  border-block: .35cqw solid var(--nbb-yellow);
+  animation: nbb-batik 4s linear infinite;
+}
+.nbb-batik--top { top: 3%; }
+.nbb-batik--bot { bottom: 28%; animation-direction: reverse; }
+.nbb-kujang {
+  position: absolute; top: 18%; width: 9cqw; height: 22cqh; z-index: 2;
+  background: linear-gradient(to bottom, var(--nbb-yellow), var(--nbb-orange));
+  clip-path: polygon(48% 0, 70% 12%, 62% 24%, 78% 40%, 60% 52%, 66% 70%, 58% 78%, 62% 100%, 44% 100%, 46% 78%, 30% 62%, 42% 46%, 22% 30%, 40% 18%);
+  animation: nbb-kujang 2s ease-in-out infinite;
+}
+.nbb-kujang--l { left: 4%; }
+.nbb-kujang--r { right: 4%; scale: -1 1; animation-delay: -1s; }
+@keyframes nbb-bop {
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  25% { transform: rotate(0deg) scale(1.07); }
+  50% { transform: rotate(3deg) scale(1); }
+  75% { transform: rotate(0deg) scale(1.07); }
+}
+@keyframes nbb-kujang { 0%, 100% { transform: rotate(-8deg) translateY(0); } 50% { transform: rotate(8deg) translateY(-1.5cqh); } }
+@keyframes nbb-batik { from { background-position: 0 0, 0 0, 0 0; } to { background-position: 8.4cqw 0, 8.4cqw 0, 8.4cqw 0; } }
 .nbb-kata {
-  position: absolute; left: 0; right: 0; bottom: 7%; text-align: center;
+  position: absolute; left: 0; right: 0; bottom: 13%; text-align: center; z-index: 3;
   font-family: 'Anton', sans-serif; font-size: 7.4cqw; line-height: 1;
   color: var(--nbb-yellow);
   text-shadow: .42cqw .42cqw 0 var(--nbb-red), .84cqw .84cqw 0 var(--nbb-blue-deep);
@@ -173,7 +202,9 @@
   0%, 8% { opacity: 0; transform: perspective(1000px) rotateY(-13deg) scale(1.5); }
   13% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(.94); }
   17% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(1.03); }
-  21%, 100% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) scale(1); }
+  21%, 100% { opacity: 1; transform: perspective(1000px) rotateY(-13deg) rotate(0deg) scale(1); }
+  40%, 80% { transform: perspective(1000px) rotateY(-9deg) rotate(-1.5deg) scale(1.01); }
+  60% { transform: perspective(1000px) rotateY(-15deg) rotate(1.5deg) scale(1); }
 }
 @keyframes nbb-tagline {
   0%, 30% { opacity: 0; transform: rotate(-1.6deg) translateY(2.4cqh) scaleX(.88); }
