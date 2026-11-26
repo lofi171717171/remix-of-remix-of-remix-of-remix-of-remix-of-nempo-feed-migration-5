@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "169946a9-0a1f-4b92-9108-fbe00946fbaa",
-  "project_id": "b485697c-2963-43cf-9ae6-5014fb733663",
-  "url": "/__l5e/assets-v1/169946a9-0a1f-4b92-9108-fbe00946fbaa/nempo-bar-bumper-3d.mp4",
-  "r2_key": "a/v1/b485697c-2963-43cf-9ae6-5014fb733663/169946a9-0a1f-4b92-9108-fbe00946fbaa/nempo-bar-bumper-3d.mp4",
-  "original_filename": "nempo-bar-bumper-3d.mp4",
-  "size": 6548415,
   "content_type": "video/mp4",
-  "created_at": "2026-11-26T23:09:45Z"
+  "created_at": "2026-11-26T23:09:45Z",
+  "original_filename": "nempo-bar-bumper-3d.mp4",
+  "project_id": "586c7ae0-eb6e-45b5-9a6f-9f7777302b77",
+  "r2_key": "a/v1/586c7ae0-eb6e-45b5-9a6f-9f7777302b77/169946a9-0a1f-4b92-9108-fbe00946fbaa/nempo-bar-bumper-3d.mp4",
+  "size": 6548415,
+  "url": "/__l5e/assets-v1/169946a9-0a1f-4b92-9108-fbe00946fbaa/nempo-bar-bumper-3d.mp4",
+  "version": 1
 }
