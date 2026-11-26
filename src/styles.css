@@ -3010,6 +3010,11 @@ html, body, #root {
   --nbb-concrete: #94a3b8;
   --nbb-concrete-deep: #475569;
   --nbb-window: #00a8ff;
+  --nbb-bronze: #5a2c06;
+  --nbb-bronze-hi: #9a5a12;
+  --nbb-bronze-deep: #3b1c04;
+  --nbb-gold-deep: #7a4208;
+  --nbb-gold-hi: #fff1b0;
   --color-primary: var(--nbb-magenta);
   --color-primary-foreground: var(--nbb-white);
   --color-primary-border: var(--nbb-magenta);
