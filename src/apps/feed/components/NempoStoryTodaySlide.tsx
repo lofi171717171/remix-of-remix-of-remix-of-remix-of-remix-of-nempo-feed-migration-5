@@ -6,6 +6,7 @@ import bgImage from '@/assets/nempo-feed-slide-50-bg.jpg';
 // Slide 52's ribbon-free truss frame; its hard-cut lower yellow beams were erased and redrawn as soft CSS beams (.nst-beam).
 import frameAsset from '@/assets/nempo-story/nempo-story-stage-frame.webp.asset.json';
 import { nempoStoryToday, nempoStoryBajidoran, NEMPO_STORY_CLEAR_BOX as CLEAR } from './nempo-story-today';
+import posterAsset from '@/assets/nempo-feed-63/nempo-feed-63-bajidoran-dj.png.asset.json';
 import { STAGE_LAMPS, STAGE_SPOTS, stageLightStyle } from './nempo-stage-lights';
 import './NempoAjakRequestSlide.css';
 import './KalaMudaRecruitSlide.css';
@@ -29,6 +30,16 @@ export function NempoStoryTodaySlide({ exportRef, clear = false, variant = 'toda
       <span className="nar-beams nst-backdrop" aria-hidden="true" />
       <span className="nst-glow nst-backdrop" aria-hidden="true" />
 
+      {variant === 'bajidoran' ? (
+        <div className="nst-poster-wrap">
+          <p className="nst-kicker">
+            <span>{P.date.weekday}</span>
+            <span className="nst-kicker-dot" aria-hidden="true" />
+            <span>{P.date.day} {P.date.month} {P.date.year}</span>
+          </p>
+          <img className="nst-poster" src={posterAsset.url} alt="Poster Bajidoran DJ" width={1440} height={1920} draggable={false} />
+        </div>
+      ) : (
       <div className="nst-stage">
         <span className="nar-spots nst-backdrop" aria-hidden="true">
           {STAGE_SPOTS.map((l, i) => (
@@ -66,6 +77,7 @@ export function NempoStoryTodaySlide({ exportRef, clear = false, variant = 'toda
           </p>
         </div>
       </div>
+      )}
 
       <header className="kmt-header nst-header">
         <span className="kmt-brand">

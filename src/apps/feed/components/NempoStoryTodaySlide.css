@@ -190,3 +190,13 @@
   paint-order: stroke fill;
   text-shadow: 0 .6cqw 1.6cqw color-mix(in srgb, #04140a 60%, transparent);
 }
+
+/* Story 02: slide 01's header and date pill over the finished Bajidoran poster. */
+.nst-poster-wrap {
+  position: absolute; z-index: 5; left: 0; right: 0; top: 19cqw;
+  display: flex; flex-direction: column; align-items: center; gap: 3.4cqw;
+}
+.nst-poster {
+  display: block; width: 88cqw; height: auto; aspect-ratio: 3 / 4; border-radius: 3cqw;
+  box-shadow: 0 2.4cqw 6cqw rgb(0 0 0 / .45);
+}
