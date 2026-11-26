@@ -54,3 +54,4 @@
 - [x] Bumper NEMPO: tirai merah berlipat membuka dari tengah seperti Bumper Acara, logo NEMPO tetap fokus
 - [x] Bumper NEMPO: tagline Event Organizer / Tim Kreatif, susunan logo dan teks terpisah agar tidak bertumpuk
 - [x] Bumper acara NEMPO: gaya retro city-pop 1980-an (papan nama NEMPO di atas kaki, tulisan Jepang, pita berjalan, pagar kuning-hitam), vertikal 1080×1440 + download MP4 8 detik
+- [ ] Bumper NEMPO: maskot rusa bertanduk megah gaya budaya Sunda Jawa Barat (bukan gaya Cina), animasi nyata + MP4
