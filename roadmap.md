@@ -49,3 +49,5 @@
 - [x] Story slide 02: header turun sedikit
 - [x] Story slide 02: lampu hanya di pojok luar, tanpa tiang, sorotan natural
 - [x] Story slide 02: video kualitas tinggi, tidak pecah
+- [x] NEMPO Story slide 01 ("Today") dihapus — Story tinggal satu slide (Bajidoran)
+- [ ] Bumper acara NEMPO: video pembuka gaya bumper DJ bar (lampu sorot, strobe, logo NEMPO), bisa dipakai terus + download MP4
