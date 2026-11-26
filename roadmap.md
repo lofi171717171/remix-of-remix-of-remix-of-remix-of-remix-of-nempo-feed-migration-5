@@ -42,3 +42,4 @@
 - [x] Slide 63/65: bersihkan sisa latar (kotak samar) di belakang foto MC dan DJ
 - [x] Slide 63/65: foto MC kembali ke potongan asli yang halus (kepala utuh), unduhan dibuat ulang
 - [x] Slide 63/65: hasil unduhan disamakan dengan pratinjau terbaru (diuji lewat tombol unduh)
+- [x] Slide 65: Story disusun ulang — poster utuh di tengah, warna tepi poster memanjang ke atas/bawah, hook "HARI INI!" + tanggal di atas, kontak di bawah lebih besar; unduhan 1440×2560 diuji identik dengan pratinjau

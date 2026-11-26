@@ -2979,4 +2979,5 @@ html, body, #root {
   --nbx-box: linear-gradient(90deg, #fff1dc 0%, #ffc988 100%);
   --nbx-box-solid: #ffe7c6;
   --nbx-box-shadow: 0 .8cqw 2cqw color-mix(in srgb, #5a1a02 35%, transparent), inset 0 0 0 .3cqw color-mix(in srgb, #ffffff 70%, transparent);
+  --nbx-contact: #263442;
 }

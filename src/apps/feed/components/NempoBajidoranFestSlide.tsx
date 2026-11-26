@@ -1,13 +1,17 @@
 import type { RefObject } from 'react';
+import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import feedPoster from '@/assets/nempo-feed-63/nempo-feed-63-bajidoran-dj.png.asset.json';
-import storyFull from '@/assets/nempo-feed-65/nempo-feed-65-bajidoran-full-bg.png.asset.json';
+import storyStage from '@/assets/nempo-feed-65/nempo-feed-65-bajidoran-stage.png.asset.json';
 import { nempoBajidoranFest as F } from './nempo-bajidoran-fest';
 import './NempoAjakRequestSlide.css';
 import './NempoBajidoranFestSlide.css';
 
 /**
  * NEMPO Feed slide 63 (3:4): Bajidoran DJ poster, shown as the owner's finished poster image
- * (feed) or that poster extended to 9:16 with its own edge colours (story, slide 65); the same files are downloaded.
+ * (the original layer photos are locked in an old project).
+ * Slide 65 (9:16 story): the same poster, its own colours extended top and bottom, with a "Hari Ini!"
+ * hook above the logos and the contact details rebuilt as larger pills below the venue cards; the same
+ * files are downloaded.
  */
 export function NempoBajidoranFestSlide({ exportRef, story = false }: { exportRef?: RefObject<HTMLElement | null>; story?: boolean }) {
   const { date, venue, info } = F;
@@ -19,9 +23,27 @@ export function NempoBajidoranFestSlide({ exportRef, story = false }: { exportRe
     >
       {story ? (
         <>
-          {/* Story "hari ini": the owner's poster extended with its own sky/ground colours (one design top to bottom, nothing cropped) with a "Hari Ini!" sticker. */}
-          <img className="nbx-story-full" src={storyFull.url} alt="" draggable={false} />
-          <p className="nbx-today-sticker"><strong>Hari Ini!</strong></p>
+          {/* Story "hari ini": the owner's poster with its own sky/ground colours extended above and
+              below (one continuous design, nothing cropped), a hook in the top band and the contacts
+              rebuilt bigger in the bottom band. */}
+          <img className="nbx-story-stage" src={storyStage.url} alt="" draggable={false} />
+          <p className="nbx-story-hook">
+            <span className="nbx-story-kicker">
+              {date.weekday}, {date.day} {date.month} {date.year}
+            </span>
+            <strong>Hari Ini!</strong>
+          </p>
+          <p className="nbx-story-contacts">
+            <span className="nbx-story-pill">
+              <FaWhatsapp aria-hidden="true" />
+              {info.number}
+            </span>
+            <span className="nbx-story-pill">
+              <FaInstagram aria-hidden="true" />
+              <FaTiktok aria-hidden="true" />
+              {F.socials}
+            </span>
+          </p>
         </>
       ) : (
         /* The owner's finished poster (the original layer photos are locked in an old project). */
