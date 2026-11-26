@@ -7,7 +7,6 @@ import './NempoBarBumper.css';
 /** One CSS loop: a retro city-pop billboard cityscape with NEMPO as the hero sign. */
 export const NBB_LOOP_SECONDS = 8;
 
-const NBB_TAPE_A = 'SAMPURASUN ★ KENDANG ★ JAIPONG ★ PESTA RAKYAT ★ GARUT ★ NEMPO ★ ';
 
 /**
  * Reusable NEMPO event bumper: a 1980s city-pop signboard cityscape — cobalt sky, stacked
@@ -33,8 +32,8 @@ export function NempoBarBumper() {
         <span className="nbb-cloud nbb-cloud--c" aria-hidden="true" />
         <span className="nbb-tower" aria-hidden="true" />
         <span className="nbb-monolith" aria-hidden="true" />
-        <p className="nbb-roofsign" aria-hidden="true">MANGGA</p>
-        <p className="nbb-vsign" aria-hidden="true">GARUT</p>
+        <p className="nbb-roofsign" aria-hidden="true"></p>
+        <p className="nbb-vsign" aria-hidden="true"></p>
         <span className="nbb-stand" aria-hidden="true" />
         <div className="nbb-hero">
           <span className="nbb-hero-slats" aria-hidden="true" />
@@ -42,14 +41,9 @@ export function NempoBarBumper() {
           <span className="nbb-batik nbb-batik--bot" aria-hidden="true" />
           <span className="nbb-kujang nbb-kujang--l" aria-hidden="true" />
           <span className="nbb-kujang nbb-kujang--r" aria-hidden="true" />
-          <span className="nbb-badge" aria-hidden="true">NEW</span>
           <img className="nbb-logo" src={nempoLogo} alt="NEMPO" draggable={false} />
-          <p className="nbb-kata">SAMPURASUN!</p>
         </div>
         <p className="nbb-tagline"><span>EVENT ORGANIZER</span><span>TIM KREATIF</span></p>
-        <div className="nbb-marquee nbb-marquee--pink" aria-hidden="true">
-          <div className="nbb-ticker"><span>{NBB_TAPE_A}{NBB_TAPE_A}</span><span>{NBB_TAPE_A}{NBB_TAPE_A}</span></div>
-        </div>
         <span className="nbb-railing" aria-hidden="true" />
         <p className="nbb-handle"><b>@nempo.id</b><span>·</span>GARUT</p>
         <span className="nbb-glint nbb-glint--1" aria-hidden="true" />
