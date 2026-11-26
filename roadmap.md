@@ -45,3 +45,7 @@
 - [x] Slide 65: Story disusun ulang — poster utuh di tengah, warna tepi poster memanjang ke atas/bawah, hook "HARI INI!" + tanggal di atas, kontak di bawah lebih besar; unduhan 1440×2560 diuji identik dengan pratinjau
 - [x] Slide 65 dipindah dari NEMPO Feed ke tab NEMPO Story (slide 02)
 - [x] NEMPO Story slide 02 (Bajidoran): susunan dibuat seperti Story slide 01 (bingkai panggung, pill tanggal, logo)
+- [x] Story slide 02: lampu panggung menyorot poster + video MP4 lampu bergerak
+- [x] Story slide 02: header turun sedikit
+- [x] Story slide 02: lampu hanya di pojok luar, tanpa tiang, sorotan natural
+- [x] Story slide 02: video kualitas tinggi, tidak pecah

@@ -29,3 +29,11 @@ export const STAGE_LAMPS: StageLight[] = [
 
 export const stageLightStyle = (l: StageLight) =>
   ({ left: `${l.x}cqw`, top: `${l.y}cqw`, '--nar-a': `${l.a}deg`, animationDelay: `${l.d}s` }) as React.CSSProperties;
+
+/** Story 02 (9:16): spotlights only in the story's outer corners, aimed in onto the poster (cqw; story is 177.8cqw tall). */
+export const STORY_POSTER_SPOTS: StageLight[] = [
+  { x: 3, y: 2, a: -32, tone: 'gold', d: 0 },
+  { x: 97, y: 2, a: 32, tone: 'gold', d: -1.5 },
+  { x: 3, y: 175.8, a: -148, tone: 'pink', d: -0.75 },
+  { x: 97, y: 175.8, a: 148, tone: 'pink', d: -2.25 },
+];

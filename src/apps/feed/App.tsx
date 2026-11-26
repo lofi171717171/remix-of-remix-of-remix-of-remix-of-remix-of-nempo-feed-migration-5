@@ -223,6 +223,7 @@ import { GARUT_BEANS_SLIDES, type GarutBeansSlide } from './components/garut-bea
 import garutBeansOpeningPng from '@/assets/garut-beans/garut-beans-01-filosofi-logo.png.asset.json';
 import { NempoStoryTodaySlide } from './components/NempoStoryTodaySlide';
 import nempoStoryTodayPng from '@/assets/nempo-story/nempo-story-01-today.png.asset.json';
+import nempoStoryBajidoranMp4 from '@/assets/nempo-story/nempo-story-02-bajidoran-lampu.mp4.asset.json';
 import nempoStoryBajidoranPng from '@/assets/nempo-story/nempo-story-02-bajidoran.png.asset.json';
 import nempoStoryTodayClearPng from '@/assets/nempo-story/nempo-story-01-today-clear.png.asset.json';
 import ggsPovScrubPng from '@/assets/ggs-feed-53-pov-playlist-owner.png.asset.json';
@@ -3751,6 +3752,10 @@ function App() {
             />
             <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
               PNG 3240×5760 ukuran Story, teks tajam. Di iPad/iPhone pilih “Simpan Gambar” atau “Simpan ke File”.
+            </p>
+            <PrebuiltVideoDownload key="nempo-story-02-mp4" src={nempoStoryBajidoranMp4.url} fileName="Nempo-Story-02-Bajidoran-Lampu.mp4" />
+            <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
+              Video Story 6 detik · 1080×1920 · lampu panggung bergerak menyorot poster, berulang mulus, persis seperti pratinjau.
             </p>
           </div>
         )}

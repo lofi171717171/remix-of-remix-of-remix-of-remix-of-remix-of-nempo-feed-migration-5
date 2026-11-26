@@ -7,7 +7,7 @@ import bgImage from '@/assets/nempo-feed-slide-50-bg.jpg';
 import frameAsset from '@/assets/nempo-story/nempo-story-stage-frame.webp.asset.json';
 import { nempoStoryToday, nempoStoryBajidoran, NEMPO_STORY_CLEAR_BOX as CLEAR } from './nempo-story-today';
 import posterAsset from '@/assets/nempo-feed-63/nempo-feed-63-bajidoran-dj.png.asset.json';
-import { STAGE_LAMPS, STAGE_SPOTS, stageLightStyle } from './nempo-stage-lights';
+import { STAGE_LAMPS, STAGE_SPOTS, STORY_POSTER_SPOTS, stageLightStyle } from './nempo-stage-lights';
 import './NempoAjakRequestSlide.css';
 import './KalaMudaRecruitSlide.css';
 import './NempoStoryTodaySlide.css';
@@ -23,7 +23,7 @@ export function NempoStoryTodaySlide({ exportRef, clear = false, variant = 'toda
   return (
     <section
       ref={exportRef as RefObject<HTMLElement>}
-      className={`nar-root nst-root kmt-root${clear ? ' nst-root--clear' : ''}`}
+      className={`nar-root nst-root kmt-root${clear ? ' nst-root--clear' : ''}${variant === 'bajidoran' ? ' nst-root--bj' : ''}`}
       aria-label={`${headline} — ${venue} — ${act.left} ${act.joiner} ${act.right}`}
     >
       <img className="nar-bg nst-bg" src={bgImage} alt="" aria-hidden="true" width={1088} height={1440} draggable={false} />
@@ -31,14 +31,26 @@ export function NempoStoryTodaySlide({ exportRef, clear = false, variant = 'toda
       <span className="nst-glow nst-backdrop" aria-hidden="true" />
 
       {variant === 'bajidoran' ? (
+        <>
+        <span className="nar-spots nst-bj-spots" aria-hidden="true">
+          {STORY_POSTER_SPOTS.map((l, i) => (
+            <span key={i} className={`nar-beam nar-beam--${l.tone}`} style={stageLightStyle(l)} />
+          ))}
+        </span>
+        <span className="nar-lamps nst-bj-lamps" aria-hidden="true">
+          {STORY_POSTER_SPOTS.map((l, i) => (
+            <span key={i} className={`nar-lamp nar-lamp--${l.tone}`} style={stageLightStyle(l)} />
+          ))}
+        </span>
         <div className="nst-poster-wrap">
-          <p className="nst-kicker">
-            <span>{P.date.weekday}</span>
-            <span className="nst-kicker-dot" aria-hidden="true" />
-            <span>{P.date.day} {P.date.month} {P.date.year}</span>
-          </p>
           <img className="nst-poster" src={posterAsset.url} alt="Poster Bajidoran DJ" width={1440} height={1920} draggable={false} />
+          <p className="nst-kicker nst-kicker--today">
+            <b>Hari Ini</b>
+            <span className="nst-kicker-dot" aria-hidden="true" />
+            <span>{P.date.weekday}, {P.date.day} {P.date.month} {P.date.year}</span>
+          </p>
         </div>
+        </>
       ) : (
       <div className="nst-stage">
         <span className="nar-spots nst-backdrop" aria-hidden="true">
