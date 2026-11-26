@@ -48,11 +48,11 @@
   animation: nbb-monolith-drift 8s ease-in-out infinite;
 }
 
-/* Rooftop sign on a grey pillar: red katakana with layered white/blue offsets, neon flicker. */
+/* Rooftop sign on a grey pillar: red lettering with layered white/blue offsets, neon flicker. */
 .nbb-roofsign {
   position: absolute; z-index: 4; right: 19cqw; top: 6cqh; width: 30cqw; height: 10cqh;
   display: grid; place-items: center;
-  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 4.6cqw;
+  font-family: 'Anton', sans-serif; font-size: 4.6cqw;
   color: var(--nbb-red);
   text-shadow: .34cqw .34cqw 0 var(--nbb-white), .68cqw .68cqw 0 var(--nbb-blue-deep);
   background: linear-gradient(to bottom, var(--nbb-green-hi), var(--nbb-green));
@@ -69,7 +69,7 @@
   position: absolute; z-index: 4; left: 5cqw; top: 12cqh; width: 8cqw; height: 30cqh;
   display: grid; place-items: center; overflow: hidden; padding: 1cqw 0;
   writing-mode: vertical-rl; text-orientation: upright;
-  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 3.9cqw;
+  font-family: 'Anton', sans-serif; font-size: 3.9cqw;
   color: var(--nbb-white); background: var(--nbb-pink);
   border: .45cqw solid var(--nbb-concrete-deep);
   box-shadow: 0 .9cqh 1.4cqh color-mix(in srgb, var(--nbb-ink) 28%, transparent);
@@ -102,7 +102,7 @@
 }
 .nbb-kata {
   position: absolute; left: 0; right: 0; bottom: 7%; text-align: center;
-  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-size: 7.4cqw; line-height: 1;
+  font-family: 'Anton', sans-serif; font-size: 7.4cqw; line-height: 1;
   color: var(--nbb-yellow);
   text-shadow: .42cqw .42cqw 0 var(--nbb-red), .84cqw .84cqw 0 var(--nbb-blue-deep);
 }
@@ -133,7 +133,7 @@
 .nbb-marquee--pink { top: 71cqh; background: var(--nbb-pink); transform: rotate(-3deg); border-block: .35cqh solid var(--nbb-white); }
 .nbb-ticker { display: flex; width: max-content; animation: nbb-tape 8s linear infinite; }
 .nbb-ticker span {
-  font-family: 'Dela Gothic One', 'Noto Sans CJK JP', sans-serif; font-weight: 700; font-size: 3.4cqw;
+  font-family: 'Anton', sans-serif; font-weight: 700; font-size: 3.4cqw;
   color: var(--nbb-white); white-space: nowrap;
 }
 

@@ -1,11 +1,11 @@
 {
-  "asset_id": "ce94a105-3836-4172-9096-ba4402768d4b",
-  "content_type": "video/mp4",
-  "created_at": "2026-11-26T21:42:39Z",
-  "original_filename": "nempo-bar-bumper.mp4",
+  "version": 1,
+  "asset_id": "99400ce8-cc5e-40a8-8db0-1271d5e4a340",
   "project_id": "b485697c-2963-43cf-9ae6-5014fb733663",
-  "r2_key": "a/v1/b485697c-2963-43cf-9ae6-5014fb733663/ce94a105-3836-4172-9096-ba4402768d4b/nempo-bar-bumper.mp4",
-  "size": 5251427,
-  "url": "/__l5e/assets-v1/ce94a105-3836-4172-9096-ba4402768d4b/nempo-bar-bumper.mp4",
-  "version": 1
+  "url": "/__l5e/assets-v1/99400ce8-cc5e-40a8-8db0-1271d5e4a340/nempo-bar-bumper-sunda.mp4",
+  "r2_key": "a/v1/b485697c-2963-43cf-9ae6-5014fb733663/99400ce8-cc5e-40a8-8db0-1271d5e4a340/nempo-bar-bumper-sunda.mp4",
+  "original_filename": "nempo-bar-bumper-sunda.mp4",
+  "size": 5007975,
+  "content_type": "video/mp4",
+  "created_at": "2026-11-26T22:37:21Z"
 }
