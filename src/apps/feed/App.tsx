@@ -4465,7 +4465,7 @@ function App() {
               <PrebuiltPngDownload
                 key="nempo-feed-65"
                 src={bajidoran65Png.url}
-                fileName="Nempo-ID-65-Bajidoran-Story.png"
+                fileName="Nempo-ID-65-Bajidoran-Hari-Ini.png"
                 label="Download PNG"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               />
