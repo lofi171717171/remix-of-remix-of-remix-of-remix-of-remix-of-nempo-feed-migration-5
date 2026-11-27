@@ -9,11 +9,11 @@
 .ggsp-heading{position:absolute;top:25cqw;left:7cqw;right:7cqw;text-align:center}
 .ggsp-audience{display:inline-block;margin:0 0 2.2cqw;padding:1.2cqw 4cqw;border-radius:99cqw;background:var(--ggpn-primary);color:var(--ggsp-white);font-size:2.8cqw;font-weight:700}
 .ggsp-heading h2{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:10cqw;font-style:italic;line-height:1.1;color:var(--ggpn-primary);paint-order:stroke fill;-webkit-text-stroke:.6cqw var(--ggsp-white)}
-.ggsp-offers{position:absolute;left:7cqw;right:7cqw;top:48cqw;list-style:none;margin:0;padding:0;display:grid;gap:1.6cqw}
-.ggsp-offer{display:grid;grid-template-columns:5cqw minmax(0,1fr) auto;align-items:center;gap:2cqw;min-height:12cqw;padding:2cqw 3cqw;border-radius:.7cqw;border:.15cqw solid var(--ggsp-line);background:var(--ggsp-white)}
+.ggsp-offers{position:absolute;left:7cqw;right:7cqw;top:46cqw;list-style:none;margin:0;padding:0;display:grid;gap:1.3cqw}
+.ggsp-offer{display:grid;grid-template-columns:5cqw minmax(0,1fr) auto;align-items:center;gap:2cqw;min-height:9.8cqw;padding:1.6cqw 3cqw;border-radius:.7cqw;border:.15cqw solid var(--ggsp-line);background:var(--ggsp-white)}
 .ggsp-number{font-size:2.6cqw;font-weight:700;color:var(--ggpn-primary);border-right:.15cqw solid var(--ggsp-line);line-height:5cqw}
-.ggsp-name{font-size:3.55cqw;line-height:1.15;font-weight:700}
-.ggsp-name small{display:block;margin-top:.8cqw;font-size:2.6cqw;font-weight:500;color:var(--ggpn-ink-soft)}
+.ggsp-name{font-size:3.4cqw;line-height:1.15;font-weight:700}
+.ggsp-name small{display:block;margin-top:.7cqw;font-size:2.5cqw;font-weight:500;color:var(--ggpn-ink-soft)}
 .ggsp-price{font-size:5cqw;line-height:1;font-weight:800;color:var(--ggpn-primary);font-variant-numeric:tabular-nums;white-space:nowrap}
 .ggsp-happy{position:absolute;top:119cqw;left:7cqw;right:7cqw;padding:2.5cqw 3.5cqw;background:var(--ggpn-primary);color:var(--ggsp-white);border:.3cqw solid var(--ggpn-gold);border-radius:.7cqw}
 .ggsp-happy-heading{display:flex;justify-content:space-between;align-items:center;gap:2cqw;border-bottom:.15cqw solid var(--ggsp-package-line);padding-bottom:1.5cqw;margin-bottom:1.5cqw}
