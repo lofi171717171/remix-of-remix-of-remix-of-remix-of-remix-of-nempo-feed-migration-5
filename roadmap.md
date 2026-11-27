@@ -1,6 +1,7 @@
 # Roadmap
 
 - [x] GGS Feed slide 65: kotak Promo Pijat 85.000 seperti slide 25, tanpa foto/header/footer, unduhan PNG transparan.
+- [x] GGS Feed slide 66: kotak Promo Nail Art start 35.000 seperti slide 65, tanpa foto/header/footer, unduhan PNG transparan 3240×4320.
 
 - [x] Migrasi proyek dari github.com/nempocreative/remix-of-remix-of-remix-of-remix-of-remix-of-nempo-feed-migration-5-54f9b1b3 (kode, slide, gambar, tes)
 - [x] Pulihkan 26 foto/video dari proyek lama yang masih terbuka (GGS 63–64, Momen Digital, CFD 57, slide 59–62) — sudah diunggah ulang ke proyek ini dan sudah diuji tampil di pratinjau
