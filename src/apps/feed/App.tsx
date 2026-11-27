@@ -152,6 +152,8 @@ import { GgsStoryHimbauanSlide } from './components/GgsStoryHimbauanSlide';
 import { GgsStoryKucingSlide } from './components/GgsStoryKucingSlide';
 import ggsStoryKucingDownload from '@/assets/ggs-story-07-kucing-menari-download.mp4.asset.json';
 import { GgsStoryMassageSlide } from './components/GgsStoryMassageSlide';
+import { GgsStoryPromosSlide } from './components/GgsStoryPromosSlide';
+import ggsStoryPromosPng from '@/assets/ggs-story-09-daftar-promo.png.asset.json';
 import ggsStoryMassageDownload from '@/assets/ggs-story-08-pijat-tangan-kaki-download.mp4.asset.json';
 import { GgsBeautyContentSlide } from './components/GgsBeautyContentSlide';
 import { GgsCouponDesigner } from './components/GgsCouponDesigner';
@@ -3046,6 +3048,10 @@ function ClientFeedArtwork({
     return <GgsStoryMassageSlide exportRef={exportRef} />;
   }
 
+  if (isStory && slide === 9) {
+    return <GgsStoryPromosSlide exportRef={exportRef} />;
+  }
+
   if (!isStory && (slide === 2 || slide === 3)) {
     return <GgsBeautyContentSlide slide={slide} exportRef={exportRef} />;
   }
@@ -3572,7 +3578,7 @@ function App() {
       ? []
       : isGgsFeed
       ? isGgsStory
-        ? [1, 2, 3, 4, 5, 6, 7, 8]
+        ? [1, 2, 3, 4, 5, 6, 7, 8, 9]
         : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66]
       : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, ...DIVISION_SLIDES, NEMPO_PAHLAWAN_SLIDE, NEMPO_CS_SLIDE, NEMPO_BAJIDORAN_SLIDE, NEMPO_BAJIDORAN_REEL_SLIDE, NEMPO_BAJIDORAN_SAWER_SLIDE, 49, NEMPO_SADULI_DJ_SLIDE, NEMPO_AJAK_REQUEST_SLIDE, NEMPO_HARI_INI_SLIDE, NEMPO_TERIMA_KASIH_SLIDE, NEMPO_MALAM_MINGGU_SLIDE, NEMPO_KOLABORASI_SLIDE, NEMPO_KOLABORASI_CARA_SLIDE, NEMPO_CAR_FREE_DAY_SLIDE, NEMPO_CFD_INFO_SLIDE, ...NEMPO_MOMEN_DIGITAL_SLIDES, NEMPO_BAJIDORAN_FEST_SLIDE, NEMPO_HARI_GURU_SLIDE];
   const selectedSlide =
@@ -4252,6 +4258,14 @@ function App() {
                   Video {activeClientSlide === 7 ? 20 : 15} detik · 1080×1440 · 30 fps.
                 </p>
               </>
+            ) : isGgsStory && activeClientSlide === 9 ? (
+              <PrebuiltPngDownload
+                key="ggs-story-09"
+                src={ggsStoryPromosPng.url}
+                fileName="GGS-Story-09-Daftar-Promo.png"
+                label="Download PNG · 3×"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-bold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              />
             ) : isGgsStory && activeClientSlide === 8 ? (
               <>
                 <PrebuiltVideoDownload src={ggsStoryMassageDownload.url} fileName="GGS-Story-08-Massage-Time.mp4" />
