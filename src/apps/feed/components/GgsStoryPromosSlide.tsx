@@ -1,13 +1,13 @@
 import type { RefObject } from 'react';
 import logo from '@/assets/ggs-story-promo-logo.png.asset.json';
-import salonPhoto from '@/assets/ggs-promo-spesial-still.jpg';
+import nailPhoto from '@/assets/ggs-story-09-ai-nails.png.asset.json';
 import { GGS_STORY_PROMOS, GGS_HAPPY_PACKAGE, formatStoryPromoPrice } from './ggs-story-promos';
 import './GgsStoryPromosSlide.css';
 
 export function GgsStoryPromosSlide({ exportRef }: { exportRef?: RefObject<HTMLElement | null> }) {
   return (
     <div ref={exportRef as RefObject<HTMLDivElement | null>} className="ggsp-root" aria-label="GGS Story 09 — Daftar Promo Cowok & Cewek">
-      <img className="ggsp-background" src={salonPhoto} alt="" aria-hidden="true" />
+      <img className="ggsp-background" src={nailPhoto.url} alt="" aria-hidden="true" />
       <div className="ggsp-background-wash" aria-hidden="true" />
       <header className="ggsp-header">
         <img className="ggsp-logo" src={logo.url} alt="GGS Beauty Salon & Spa" />
