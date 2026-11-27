@@ -110,6 +110,7 @@
   --ggsp-line: #ebc2d3;
   --ggsp-package-line: color-mix(in srgb, #ffffff 30%, transparent);
   --ggsp-gold-light: #ffe3a0;
+  --ggsp-photo-wash: linear-gradient(180deg, color-mix(in srgb, var(--ggpn-paper) 18%, transparent) 0%, color-mix(in srgb, var(--ggpn-paper) 38%, transparent) 24%, color-mix(in srgb, var(--ggpn-paper) 72%, transparent) 62%, var(--ggpn-paper) 100%);
 }
 .ggpn-root, .ggpp-root, .ggnp-root, .ggsp-root {
   --ggpn-ink: #3d0b2a;

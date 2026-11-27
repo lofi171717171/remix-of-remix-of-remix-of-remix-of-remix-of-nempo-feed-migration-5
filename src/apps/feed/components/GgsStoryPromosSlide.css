@@ -1,5 +1,7 @@
-.ggsp-root{position:relative;isolation:isolate;width:100%;aspect-ratio:9/16;overflow:hidden;container-type:inline-size;background:transparent;color:var(--ggpn-ink);font-family:'DM Sans',sans-serif}
+.ggsp-root{position:relative;isolation:isolate;width:100%;aspect-ratio:9/16;overflow:hidden;container-type:inline-size;background:var(--ggpn-paper);color:var(--ggpn-ink);font-family:'DM Sans',sans-serif}
 .ggsp-root *{box-sizing:border-box;letter-spacing:0}
+.ggsp-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.ggsp-background-wash{position:absolute;inset:0;background:var(--ggsp-photo-wash);z-index:-1}
 .ggsp-header{position:absolute;inset:0 0 auto;height:20cqw}
 .ggsp-logo{position:absolute;left:3cqw;top:0;width:20cqw;height:auto}
 .ggsp-motto{position:absolute;right:8cqw;top:5.7cqw;margin:0;font-size:3.3cqw;line-height:1.05;font-weight:800;color:var(--ggsp-pink);paint-order:stroke fill;-webkit-text-stroke:.6cqw var(--ggsp-white);filter:drop-shadow(0 .2cqw .15cqw var(--ggpn-ink-soft))}
