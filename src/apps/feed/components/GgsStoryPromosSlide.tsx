@@ -35,6 +35,10 @@ export function GgsStoryPromosSlide({ exportRef }: { exportRef?: RefObject<HTMLE
         </ul>
         <p className="ggsp-happy-note">Cowok: creambath dan styling</p>
       </section>
+      <div className="ggsp-home-service">
+        <strong>Layanan ke rumah &amp; acara</strong>
+        <p>Perawatan sesuai kebutuhan Anda,<br />di lokasi pilihan Anda.</p>
+      </div>
       <footer className="ggsp-footer"><span>@ggsbeauty.hair.co</span><strong>BOOKING <em>NOW</em></strong><span>0823-4277-7723</span></footer>
     </div>
   );

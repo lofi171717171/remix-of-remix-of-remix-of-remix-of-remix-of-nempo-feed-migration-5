@@ -1,6 +1,7 @@
 # Roadmap
 
 - [x] GGS Story 09: five exact offers and Paket Happy, Feed branding, photo background and PNG matching the preview.
+- [x] GGS Story 09: add home/event booking information below the Happy Package and refresh the matching PNG.
 
 - [x] GGS Feed slide 65: kotak Promo Pijat 85.000 seperti slide 25, tanpa foto/header/footer, unduhan PNG transparan.
 - [x] GGS Feed slide 66: kotak Promo Nail Art start 35.000 seperti slide 65, tanpa foto/header/footer, unduhan PNG transparan 3240×4320.
